@@ -59,17 +59,33 @@ clean_enfr <- function(x) {
 
     # Crear grupo de edad quinquenal
     mutate(
-      grupo_edad_5 = age_categories(edad, lower = 20, upper = 80, by = 5)
+      grupo_edad_5 = age_categories(
+        edad,
+        lower = 20,
+        upper = 80,
+        by = 5,
+        separator = " a "
+      )
     ) |>
 
     # Crear grupo de edad decenal
     mutate(
-      grupo_edad_10 = age_categories(edad, lower = 20, upper = 80, by = 10)
+      grupo_edad_10 = age_categories(
+        edad,
+        lower = 20,
+        upper = 80,
+        by = 10,
+        separator = " a "
+      )
     ) |>
 
     # Crear grupo de edad ampliado
     mutate(
-      grupo_edad_amp = age_categories(edad, breakers = c(20, 30, 45, 60, 75))
+      grupo_edad_amp = age_categories(
+        edad,
+        breakers = c(20, 30, 45, 60, 75),
+        separator = " a "
+      )
     ) |>
 
     # Cambiar etiquetas sexo
