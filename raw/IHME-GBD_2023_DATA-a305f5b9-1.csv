@@ -1,0 +1,313 @@
+measure_id,measure_name,location_id,location_name,sex_id,sex_name,age_id,age_name,cause_id,cause_name,metric_id,metric_name,year,val,upper,lower
+2,DALYs (Disability-Adjusted Life Years),97,Argentina,1,Male,9,20-24 years,976,Diabetes mellitus type 2,1,Number,2005,360.3273030123417,554.853096615778,237.71905082654365
+2,DALYs (Disability-Adjusted Life Years),97,Argentina,2,Female,9,20-24 years,976,Diabetes mellitus type 2,1,Number,2005,608.1489765134572,801.7170918691794,465.22367969683114
+2,DALYs (Disability-Adjusted Life Years),97,Argentina,1,Male,10,25-29 years,976,Diabetes mellitus type 2,1,Number,2005,597.8073113115341,844.4344240647713,410.2673148812027
+2,DALYs (Disability-Adjusted Life Years),97,Argentina,2,Female,10,25-29 years,976,Diabetes mellitus type 2,1,Number,2005,912.7589910810707,1231.0089492416942,658.2180320399236
+2,DALYs (Disability-Adjusted Life Years),97,Argentina,1,Male,11,30-34 years,976,Diabetes mellitus type 2,1,Number,2005,1246.3840811020104,1600.7465444704785,929.1362211578776
+2,DALYs (Disability-Adjusted Life Years),97,Argentina,2,Female,11,30-34 years,976,Diabetes mellitus type 2,1,Number,2005,1335.378462607072,1741.372200001789,1002.0004366593689
+2,DALYs (Disability-Adjusted Life Years),97,Argentina,1,Male,12,35-39 years,976,Diabetes mellitus type 2,1,Number,2005,1881.6368588195796,2396.798260167175,1396.1304334414222
+2,DALYs (Disability-Adjusted Life Years),97,Argentina,2,Female,12,35-39 years,976,Diabetes mellitus type 2,1,Number,2005,2072.1512300991817,2655.6522534261526,1568.854267272884
+2,DALYs (Disability-Adjusted Life Years),97,Argentina,1,Male,13,40-44 years,976,Diabetes mellitus type 2,1,Number,2005,3339.533074633953,4191.629950714046,2573.156588622701
+2,DALYs (Disability-Adjusted Life Years),97,Argentina,2,Female,13,40-44 years,976,Diabetes mellitus type 2,1,Number,2005,3279.590013628893,4171.396148495978,2540.042413543396
+2,DALYs (Disability-Adjusted Life Years),97,Argentina,1,Male,14,45-49 years,976,Diabetes mellitus type 2,1,Number,2005,7626.842988978642,9301.473324849174,6241.7521613463
+2,DALYs (Disability-Adjusted Life Years),97,Argentina,2,Female,14,45-49 years,976,Diabetes mellitus type 2,1,Number,2005,5922.266721251237,7265.690357205203,4737.640577225923
+2,DALYs (Disability-Adjusted Life Years),97,Argentina,1,Male,15,50-54 years,976,Diabetes mellitus type 2,1,Number,2005,13576.56888152897,15912.60176669987,11616.846505687994
+2,DALYs (Disability-Adjusted Life Years),97,Argentina,2,Female,15,50-54 years,976,Diabetes mellitus type 2,1,Number,2005,9632.176014482206,11464.575611022035,7960.669510737766
+2,DALYs (Disability-Adjusted Life Years),97,Argentina,1,Male,16,55-59 years,976,Diabetes mellitus type 2,1,Number,2005,19332.47778184733,22166.419485364495,16915.024578939378
+2,DALYs (Disability-Adjusted Life Years),97,Argentina,2,Female,16,55-59 years,976,Diabetes mellitus type 2,1,Number,2005,14342.21910779006,16932.114251712694,12061.608353637603
+2,DALYs (Disability-Adjusted Life Years),97,Argentina,1,Male,17,60-64 years,976,Diabetes mellitus type 2,1,Number,2005,24325.814998410864,28036.26667754441,21284.03464876568
+2,DALYs (Disability-Adjusted Life Years),97,Argentina,2,Female,17,60-64 years,976,Diabetes mellitus type 2,1,Number,2005,18528.87677839248,21700.317785313004,15823.221954109493
+2,DALYs (Disability-Adjusted Life Years),97,Argentina,1,Male,18,65-69 years,976,Diabetes mellitus type 2,1,Number,2005,24691.75891728621,28661.08263249184,21541.915858618417
+2,DALYs (Disability-Adjusted Life Years),97,Argentina,2,Female,18,65-69 years,976,Diabetes mellitus type 2,1,Number,2005,21037.65468268142,24670.798526062434,17830.92592568823
+2,DALYs (Disability-Adjusted Life Years),97,Argentina,1,Male,19,70-74 years,976,Diabetes mellitus type 2,1,Number,2005,23693.41218246263,27183.485993629387,21004.52791069626
+2,DALYs (Disability-Adjusted Life Years),97,Argentina,2,Female,19,70-74 years,976,Diabetes mellitus type 2,1,Number,2005,22266.84839737579,25653.72940198885,19247.22532638089
+2,DALYs (Disability-Adjusted Life Years),97,Argentina,1,Male,20,75-79 years,976,Diabetes mellitus type 2,1,Number,2005,18688.082502022633,20810.27453411295,16847.396088755027
+2,DALYs (Disability-Adjusted Life Years),97,Argentina,2,Female,20,75-79 years,976,Diabetes mellitus type 2,1,Number,2005,20458.105556634364,23419.801491086713,17828.956803887835
+2,DALYs (Disability-Adjusted Life Years),97,Argentina,1,Male,21,80+ years,976,Diabetes mellitus type 2,1,Number,2005,15902.829142570883,17657.602272684122,14436.361423458231
+2,DALYs (Disability-Adjusted Life Years),97,Argentina,2,Female,21,80+ years,976,Diabetes mellitus type 2,1,Number,2005,26747.726245435177,30397.28770936798,22983.684499471652
+2,DALYs (Disability-Adjusted Life Years),97,Argentina,1,Male,9,20-24 years,976,Diabetes mellitus type 2,1,Number,2018,454.66746109587797,675.8671791483193,296.87178190872424
+2,DALYs (Disability-Adjusted Life Years),97,Argentina,2,Female,9,20-24 years,976,Diabetes mellitus type 2,1,Number,2018,621.7259121229038,834.8220564200948,435.5207684084159
+2,DALYs (Disability-Adjusted Life Years),97,Argentina,1,Male,10,25-29 years,976,Diabetes mellitus type 2,1,Number,2018,778.2037364640132,1066.0675037104552,509.1553095962463
+2,DALYs (Disability-Adjusted Life Years),97,Argentina,2,Female,10,25-29 years,976,Diabetes mellitus type 2,1,Number,2018,1101.3810000465717,1493.7375463237977,780.6132058561104
+2,DALYs (Disability-Adjusted Life Years),97,Argentina,1,Male,11,30-34 years,976,Diabetes mellitus type 2,1,Number,2018,1787.9447483957715,2286.596357729031,1341.0581851303873
+2,DALYs (Disability-Adjusted Life Years),97,Argentina,2,Female,11,30-34 years,976,Diabetes mellitus type 2,1,Number,2018,1873.2942934200512,2471.703558703405,1362.84629301647
+2,DALYs (Disability-Adjusted Life Years),97,Argentina,1,Male,12,35-39 years,976,Diabetes mellitus type 2,1,Number,2018,3205.884904932016,4071.1181251849302,2387.899099792782
+2,DALYs (Disability-Adjusted Life Years),97,Argentina,2,Female,12,35-39 years,976,Diabetes mellitus type 2,1,Number,2018,3125.2069806479526,4039.9241287243067,2270.463809354709
+2,DALYs (Disability-Adjusted Life Years),97,Argentina,1,Male,13,40-44 years,976,Diabetes mellitus type 2,1,Number,2018,5566.725462420774,7152.772748120526,4255.07141484095
+2,DALYs (Disability-Adjusted Life Years),97,Argentina,2,Female,13,40-44 years,976,Diabetes mellitus type 2,1,Number,2018,5126.858765557633,6746.786546702961,3736.724116662617
+2,DALYs (Disability-Adjusted Life Years),97,Argentina,1,Male,14,45-49 years,976,Diabetes mellitus type 2,1,Number,2018,10246.521805429447,12490.100635430415,8275.139731461335
+2,DALYs (Disability-Adjusted Life Years),97,Argentina,2,Female,14,45-49 years,976,Diabetes mellitus type 2,1,Number,2018,8272.60363904885,10510.092567491249,6305.17507829766
+2,DALYs (Disability-Adjusted Life Years),97,Argentina,1,Male,15,50-54 years,976,Diabetes mellitus type 2,1,Number,2018,14940.588298603678,17812.461724274937,12478.270736634326
+2,DALYs (Disability-Adjusted Life Years),97,Argentina,2,Female,15,50-54 years,976,Diabetes mellitus type 2,1,Number,2018,11049.256054879543,13575.33054976938,8655.115804311865
+2,DALYs (Disability-Adjusted Life Years),97,Argentina,1,Male,16,55-59 years,976,Diabetes mellitus type 2,1,Number,2018,21080.911352279905,25002.182966009703,17707.45237914727
+2,DALYs (Disability-Adjusted Life Years),97,Argentina,2,Female,16,55-59 years,976,Diabetes mellitus type 2,1,Number,2018,15908.560541069703,19388.593316822582,12707.842886197785
+2,DALYs (Disability-Adjusted Life Years),97,Argentina,1,Male,17,60-64 years,976,Diabetes mellitus type 2,1,Number,2018,27130.20007372877,31868.289290482433,23357.389909853988
+2,DALYs (Disability-Adjusted Life Years),97,Argentina,2,Female,17,60-64 years,976,Diabetes mellitus type 2,1,Number,2018,21295.00238590726,26009.514661519002,17449.41842880055
+2,DALYs (Disability-Adjusted Life Years),97,Argentina,1,Male,18,65-69 years,976,Diabetes mellitus type 2,1,Number,2018,29328.75993551644,34315.4405369163,25388.697556236028
+2,DALYs (Disability-Adjusted Life Years),97,Argentina,2,Female,18,65-69 years,976,Diabetes mellitus type 2,1,Number,2018,23073.305671686143,28257.556734775477,18951.398719515353
+2,DALYs (Disability-Adjusted Life Years),97,Argentina,1,Male,19,70-74 years,976,Diabetes mellitus type 2,1,Number,2018,25201.11126623369,29011.77345946297,22025.218327675768
+2,DALYs (Disability-Adjusted Life Years),97,Argentina,2,Female,19,70-74 years,976,Diabetes mellitus type 2,1,Number,2018,22320.6366780118,26850.439971497588,18623.05917009902
+2,DALYs (Disability-Adjusted Life Years),97,Argentina,1,Male,20,75-79 years,976,Diabetes mellitus type 2,1,Number,2018,18217.558761870678,20401.946338673588,16115.253001881512
+2,DALYs (Disability-Adjusted Life Years),97,Argentina,2,Female,20,75-79 years,976,Diabetes mellitus type 2,1,Number,2018,18422.472936562324,21887.234714727714,15442.511044960802
+2,DALYs (Disability-Adjusted Life Years),97,Argentina,1,Male,21,80+ years,976,Diabetes mellitus type 2,1,Number,2018,18623.604571122676,21121.72250530659,16554.867943078094
+2,DALYs (Disability-Adjusted Life Years),97,Argentina,2,Female,21,80+ years,976,Diabetes mellitus type 2,1,Number,2018,27960.747273089833,32439.464958865046,23305.924367943615
+2,DALYs (Disability-Adjusted Life Years),97,Argentina,1,Male,9,20-24 years,976,Diabetes mellitus type 2,1,Number,2013,444.96924892144756,641.3492418557428,301.8277547131354
+2,DALYs (Disability-Adjusted Life Years),97,Argentina,2,Female,9,20-24 years,976,Diabetes mellitus type 2,1,Number,2013,602.2229287495345,836.0942277701043,420.5518754880823
+2,DALYs (Disability-Adjusted Life Years),97,Argentina,1,Male,10,25-29 years,976,Diabetes mellitus type 2,1,Number,2013,699.5473687289459,991.2915042979618,474.3176009016077
+2,DALYs (Disability-Adjusted Life Years),97,Argentina,2,Female,10,25-29 years,976,Diabetes mellitus type 2,1,Number,2013,952.984749708024,1330.2154625683868,685.6638350549192
+2,DALYs (Disability-Adjusted Life Years),97,Argentina,1,Male,11,30-34 years,976,Diabetes mellitus type 2,1,Number,2013,1574.2613366812182,2025.125250759667,1151.4024969093489
+2,DALYs (Disability-Adjusted Life Years),97,Argentina,2,Female,11,30-34 years,976,Diabetes mellitus type 2,1,Number,2013,1661.997750213984,2162.90031841892,1185.8012705173753
+2,DALYs (Disability-Adjusted Life Years),97,Argentina,1,Male,12,35-39 years,976,Diabetes mellitus type 2,1,Number,2013,2689.642763937208,3347.709925157303,2065.8559279641063
+2,DALYs (Disability-Adjusted Life Years),97,Argentina,2,Female,12,35-39 years,976,Diabetes mellitus type 2,1,Number,2013,2577.001706173124,3409.5683438420792,1880.5345359710223
+2,DALYs (Disability-Adjusted Life Years),97,Argentina,1,Male,13,40-44 years,976,Diabetes mellitus type 2,1,Number,2013,4413.787239903097,5629.1274858549705,3394.604882534113
+2,DALYs (Disability-Adjusted Life Years),97,Argentina,2,Female,13,40-44 years,976,Diabetes mellitus type 2,1,Number,2013,3932.5930660995004,5179.838228586041,2967.3465586516845
+2,DALYs (Disability-Adjusted Life Years),97,Argentina,1,Male,14,45-49 years,976,Diabetes mellitus type 2,1,Number,2013,9097.961830587734,10968.331295095802,7404.141198338724
+2,DALYs (Disability-Adjusted Life Years),97,Argentina,2,Female,14,45-49 years,976,Diabetes mellitus type 2,1,Number,2013,6458.452505447477,8199.398717859007,5144.776267519372
+2,DALYs (Disability-Adjusted Life Years),97,Argentina,1,Male,15,50-54 years,976,Diabetes mellitus type 2,1,Number,2013,14078.073095808148,16822.942909152323,11810.581699265344
+2,DALYs (Disability-Adjusted Life Years),97,Argentina,2,Female,15,50-54 years,976,Diabetes mellitus type 2,1,Number,2013,9911.231805644877,12229.140479447418,8067.026110889801
+2,DALYs (Disability-Adjusted Life Years),97,Argentina,1,Male,16,55-59 years,976,Diabetes mellitus type 2,1,Number,2013,19950.14013389332,23729.630388061356,17176.311958441172
+2,DALYs (Disability-Adjusted Life Years),97,Argentina,2,Female,16,55-59 years,976,Diabetes mellitus type 2,1,Number,2013,15080.942287124644,18102.195237228192,12474.379102755938
+2,DALYs (Disability-Adjusted Life Years),97,Argentina,1,Male,17,60-64 years,976,Diabetes mellitus type 2,1,Number,2013,24852.431490973155,28920.871175023352,21600.567435403158
+2,DALYs (Disability-Adjusted Life Years),97,Argentina,2,Female,17,60-64 years,976,Diabetes mellitus type 2,1,Number,2013,20539.85134972461,24245.56198317741,17212.81545290315
+2,DALYs (Disability-Adjusted Life Years),97,Argentina,1,Male,18,65-69 years,976,Diabetes mellitus type 2,1,Number,2013,25863.925929718494,30099.87051921062,22721.72583558801
+2,DALYs (Disability-Adjusted Life Years),97,Argentina,2,Female,18,65-69 years,976,Diabetes mellitus type 2,1,Number,2013,21801.716555590603,25975.04663988181,18103.57704870614
+2,DALYs (Disability-Adjusted Life Years),97,Argentina,1,Male,19,70-74 years,976,Diabetes mellitus type 2,1,Number,2013,21596.136697452857,24904.580339976594,19141.08797774958
+2,DALYs (Disability-Adjusted Life Years),97,Argentina,2,Female,19,70-74 years,976,Diabetes mellitus type 2,1,Number,2013,20343.152649850774,23990.86264185321,17148.733553752187
+2,DALYs (Disability-Adjusted Life Years),97,Argentina,1,Male,20,75-79 years,976,Diabetes mellitus type 2,1,Number,2013,16423.97032566882,18562.56336457663,14574.16126203107
+2,DALYs (Disability-Adjusted Life Years),97,Argentina,2,Female,20,75-79 years,976,Diabetes mellitus type 2,1,Number,2013,17172.091058268164,20211.36457989474,14706.560523596312
+2,DALYs (Disability-Adjusted Life Years),97,Argentina,1,Male,21,80+ years,976,Diabetes mellitus type 2,1,Number,2013,17829.048408906845,19896.200069686358,16046.697865388198
+2,DALYs (Disability-Adjusted Life Years),97,Argentina,2,Female,21,80+ years,976,Diabetes mellitus type 2,1,Number,2013,27683.797367491978,32018.655372633915,23179.804454349538
+2,DALYs (Disability-Adjusted Life Years),97,Argentina,1,Male,9,20-24 years,976,Diabetes mellitus type 2,1,Number,2009,417.6856908027449,613.2702884344671,259.97612414937737
+2,DALYs (Disability-Adjusted Life Years),97,Argentina,2,Female,9,20-24 years,976,Diabetes mellitus type 2,1,Number,2009,619.9962260357081,838.9840280004589,464.5226950691243
+2,DALYs (Disability-Adjusted Life Years),97,Argentina,1,Male,10,25-29 years,976,Diabetes mellitus type 2,1,Number,2009,684.8711389033356,981.7056973291506,446.2643225893794
+2,DALYs (Disability-Adjusted Life Years),97,Argentina,2,Female,10,25-29 years,976,Diabetes mellitus type 2,1,Number,2009,964.2319401615084,1274.4325387108524,699.5338074767346
+2,DALYs (Disability-Adjusted Life Years),97,Argentina,1,Male,11,30-34 years,976,Diabetes mellitus type 2,1,Number,2009,1477.0514355335931,1906.01642999804,1109.4902688392667
+2,DALYs (Disability-Adjusted Life Years),97,Argentina,2,Female,11,30-34 years,976,Diabetes mellitus type 2,1,Number,2009,1655.563906975916,2113.082381097861,1247.7096723618938
+2,DALYs (Disability-Adjusted Life Years),97,Argentina,1,Male,12,35-39 years,976,Diabetes mellitus type 2,1,Number,2009,2258.149578336853,2882.016200139701,1710.8960283109886
+2,DALYs (Disability-Adjusted Life Years),97,Argentina,2,Female,12,35-39 years,976,Diabetes mellitus type 2,1,Number,2009,2419.6079062908507,3203.8508345826203,1845.0763618672527
+2,DALYs (Disability-Adjusted Life Years),97,Argentina,1,Male,13,40-44 years,976,Diabetes mellitus type 2,1,Number,2009,3645.761844188613,4579.0911504618625,2795.5924808834698
+2,DALYs (Disability-Adjusted Life Years),97,Argentina,2,Female,13,40-44 years,976,Diabetes mellitus type 2,1,Number,2009,3418.4787994937346,4377.52285866937,2655.181853520081
+2,DALYs (Disability-Adjusted Life Years),97,Argentina,1,Male,14,45-49 years,976,Diabetes mellitus type 2,1,Number,2009,7704.0387000021265,9301.255286690468,6302.735748153717
+2,DALYs (Disability-Adjusted Life Years),97,Argentina,2,Female,14,45-49 years,976,Diabetes mellitus type 2,1,Number,2009,6195.4555133179265,7647.482551105895,4986.367543923809
+2,DALYs (Disability-Adjusted Life Years),97,Argentina,1,Male,15,50-54 years,976,Diabetes mellitus type 2,1,Number,2009,13131.474843678161,15468.44088690687,11100.880558705896
+2,DALYs (Disability-Adjusted Life Years),97,Argentina,2,Female,15,50-54 years,976,Diabetes mellitus type 2,1,Number,2009,9707.935107149873,11761.540424010978,8138.228143291735
+2,DALYs (Disability-Adjusted Life Years),97,Argentina,1,Male,16,55-59 years,976,Diabetes mellitus type 2,1,Number,2009,19120.892476988167,22098.036014694466,16482.35670984686
+2,DALYs (Disability-Adjusted Life Years),97,Argentina,2,Female,16,55-59 years,976,Diabetes mellitus type 2,1,Number,2009,14582.835050524176,17195.689533106866,12363.80440830518
+2,DALYs (Disability-Adjusted Life Years),97,Argentina,1,Male,17,60-64 years,976,Diabetes mellitus type 2,1,Number,2009,23566.43344895968,27487.238378883852,20639.31089283895
+2,DALYs (Disability-Adjusted Life Years),97,Argentina,2,Female,17,60-64 years,976,Diabetes mellitus type 2,1,Number,2009,18838.080950401698,21989.362325766233,15900.565664722562
+2,DALYs (Disability-Adjusted Life Years),97,Argentina,1,Male,18,65-69 years,976,Diabetes mellitus type 2,1,Number,2009,23858.50885319211,27901.71756777433,20908.613104502958
+2,DALYs (Disability-Adjusted Life Years),97,Argentina,2,Female,18,65-69 years,976,Diabetes mellitus type 2,1,Number,2009,20499.781993077228,24316.762939968692,17234.771043463603
+2,DALYs (Disability-Adjusted Life Years),97,Argentina,1,Male,19,70-74 years,976,Diabetes mellitus type 2,1,Number,2009,20843.4201604929,24049.038096252036,18461.29779167688
+2,DALYs (Disability-Adjusted Life Years),97,Argentina,2,Female,19,70-74 years,976,Diabetes mellitus type 2,1,Number,2009,19880.793149103276,23337.603630023994,16875.06753359097
+2,DALYs (Disability-Adjusted Life Years),97,Argentina,1,Male,20,75-79 years,976,Diabetes mellitus type 2,1,Number,2009,16838.49850399771,19126.541635921116,15038.138431227744
+2,DALYs (Disability-Adjusted Life Years),97,Argentina,2,Female,20,75-79 years,976,Diabetes mellitus type 2,1,Number,2009,18438.516920310856,21174.57054647194,16073.898985623227
+2,DALYs (Disability-Adjusted Life Years),97,Argentina,1,Male,21,80+ years,976,Diabetes mellitus type 2,1,Number,2009,15839.742866799184,17715.14064198853,14336.122957966803
+2,DALYs (Disability-Adjusted Life Years),97,Argentina,2,Female,21,80+ years,976,Diabetes mellitus type 2,1,Number,2009,25935.503339115432,30096.930413881222,22088.184456216626
+3,YLDs (Years Lived with Disability),97,Argentina,1,Male,9,20-24 years,976,Diabetes mellitus type 2,1,Number,2005,256.7924996840489,453.3545465545584,142.50583135239415
+3,YLDs (Years Lived with Disability),97,Argentina,2,Female,9,20-24 years,976,Diabetes mellitus type 2,1,Number,2005,308.18115963977453,483.5183951425692,179.4172965217998
+3,YLDs (Years Lived with Disability),97,Argentina,1,Male,9,20-24 years,976,Diabetes mellitus type 2,1,Number,2009,306.28795589477005,495.0716414894995,165.97258004963095
+3,YLDs (Years Lived with Disability),97,Argentina,2,Female,9,20-24 years,976,Diabetes mellitus type 2,1,Number,2009,343.4252325214204,574.3456907084296,182.69071915285872
+3,YLDs (Years Lived with Disability),97,Argentina,1,Male,9,20-24 years,976,Diabetes mellitus type 2,1,Number,2013,317.18220340732324,520.5441806202952,186.81536262609137
+3,YLDs (Years Lived with Disability),97,Argentina,2,Female,9,20-24 years,976,Diabetes mellitus type 2,1,Number,2013,348.98190028050266,560.8453506147073,187.0576824549369
+3,YLDs (Years Lived with Disability),97,Argentina,1,Male,9,20-24 years,976,Diabetes mellitus type 2,1,Number,2018,334.4730757024809,554.3684004258357,178.0208214255576
+3,YLDs (Years Lived with Disability),97,Argentina,2,Female,9,20-24 years,976,Diabetes mellitus type 2,1,Number,2018,366.9275706653653,577.9063521059846,191.86386027234607
+3,YLDs (Years Lived with Disability),97,Argentina,1,Male,10,25-29 years,976,Diabetes mellitus type 2,1,Number,2005,450.3180007413822,692.3419001203848,265.8872889299612
+3,YLDs (Years Lived with Disability),97,Argentina,2,Female,10,25-29 years,976,Diabetes mellitus type 2,1,Number,2005,562.3397786101602,879.302677878441,326.19757813624875
+3,YLDs (Years Lived with Disability),97,Argentina,1,Male,10,25-29 years,976,Diabetes mellitus type 2,1,Number,2009,534.4167242591228,819.7120352731433,303.92385277669376
+3,YLDs (Years Lived with Disability),97,Argentina,2,Female,10,25-29 years,976,Diabetes mellitus type 2,1,Number,2009,627.3619211392568,927.1174404801887,369.4066788145112
+3,YLDs (Years Lived with Disability),97,Argentina,1,Male,10,25-29 years,976,Diabetes mellitus type 2,1,Number,2013,551.7713180557258,827.5726160364318,328.1942294012738
+3,YLDs (Years Lived with Disability),97,Argentina,2,Female,10,25-29 years,976,Diabetes mellitus type 2,1,Number,2013,650.369348804501,1005.1842430234178,395.11152829616645
+3,YLDs (Years Lived with Disability),97,Argentina,1,Male,10,25-29 years,976,Diabetes mellitus type 2,1,Number,2018,612.9744697447935,898.8309322553619,331.28386839368875
+3,YLDs (Years Lived with Disability),97,Argentina,2,Female,10,25-29 years,976,Diabetes mellitus type 2,1,Number,2018,731.9735505316715,1115.205442594232,422.2798866067062
+3,YLDs (Years Lived with Disability),97,Argentina,1,Male,11,30-34 years,976,Diabetes mellitus type 2,1,Number,2005,742.2469632640401,1083.7470509830978,428.0957328831488
+3,YLDs (Years Lived with Disability),97,Argentina,2,Female,11,30-34 years,976,Diabetes mellitus type 2,1,Number,2005,857.5878770917772,1248.7365268857743,531.5654283115825
+3,YLDs (Years Lived with Disability),97,Argentina,1,Male,11,30-34 years,976,Diabetes mellitus type 2,1,Number,2009,920.1625865602094,1331.9773479963776,581.7665742778406
+3,YLDs (Years Lived with Disability),97,Argentina,2,Female,11,30-34 years,976,Diabetes mellitus type 2,1,Number,2009,1050.3741423180015,1487.8096350585456,641.3341999369167
+3,YLDs (Years Lived with Disability),97,Argentina,1,Male,11,30-34 years,976,Diabetes mellitus type 2,1,Number,2013,996.6081461579824,1417.68306393025,579.352287357909
+3,YLDs (Years Lived with Disability),97,Argentina,2,Female,11,30-34 years,976,Diabetes mellitus type 2,1,Number,2013,1123.2888927997983,1600.202834811734,686.5374421591273
+3,YLDs (Years Lived with Disability),97,Argentina,1,Male,11,30-34 years,976,Diabetes mellitus type 2,1,Number,2018,1125.605351332683,1621.8326039006724,699.7606225882505
+3,YLDs (Years Lived with Disability),97,Argentina,2,Female,11,30-34 years,976,Diabetes mellitus type 2,1,Number,2018,1266.0851196325389,1841.0172126151224,804.0055717805176
+3,YLDs (Years Lived with Disability),97,Argentina,1,Male,12,35-39 years,976,Diabetes mellitus type 2,1,Number,2005,1234.2256627578292,1749.343548831616,783.8606590852862
+3,YLDs (Years Lived with Disability),97,Argentina,2,Female,12,35-39 years,976,Diabetes mellitus type 2,1,Number,2005,1306.5882379004586,1901.3284442657236,846.481595970931
+3,YLDs (Years Lived with Disability),97,Argentina,1,Male,12,35-39 years,976,Diabetes mellitus type 2,1,Number,2009,1531.444799141606,2131.806814108205,961.6061604637838
+3,YLDs (Years Lived with Disability),97,Argentina,2,Female,12,35-39 years,976,Diabetes mellitus type 2,1,Number,2009,1545.7364617445735,2291.4056847347247,1012.201002034546
+3,YLDs (Years Lived with Disability),97,Argentina,1,Male,12,35-39 years,976,Diabetes mellitus type 2,1,Number,2013,1829.7875942477224,2490.7253873961904,1200.235596179867
+3,YLDs (Years Lived with Disability),97,Argentina,2,Female,12,35-39 years,976,Diabetes mellitus type 2,1,Number,2013,1834.2302149424684,2600.634607576726,1159.663486715613
+3,YLDs (Years Lived with Disability),97,Argentina,1,Male,12,35-39 years,976,Diabetes mellitus type 2,1,Number,2018,2236.9099398998096,3089.4432738259597,1474.6195387296457
+3,YLDs (Years Lived with Disability),97,Argentina,2,Female,12,35-39 years,976,Diabetes mellitus type 2,1,Number,2018,2246.08797064712,3151.6365721460747,1433.0743197427423
+3,YLDs (Years Lived with Disability),97,Argentina,1,Male,13,40-44 years,976,Diabetes mellitus type 2,1,Number,2005,2023.9126494140455,2920.154382181935,1229.4841452948172
+3,YLDs (Years Lived with Disability),97,Argentina,2,Female,13,40-44 years,976,Diabetes mellitus type 2,1,Number,2005,2020.978264492396,2849.93240763114,1327.929891605972
+3,YLDs (Years Lived with Disability),97,Argentina,1,Male,13,40-44 years,976,Diabetes mellitus type 2,1,Number,2009,2378.840880533882,3325.688922114785,1514.015023936818
+3,YLDs (Years Lived with Disability),97,Argentina,2,Female,13,40-44 years,976,Diabetes mellitus type 2,1,Number,2009,2189.908734635469,3146.0571013002605,1443.8622205128206
+3,YLDs (Years Lived with Disability),97,Argentina,1,Male,13,40-44 years,976,Diabetes mellitus type 2,1,Number,2013,2893.5917921971954,3961.9327884138224,1929.6541927202445
+3,YLDs (Years Lived with Disability),97,Argentina,2,Female,13,40-44 years,976,Diabetes mellitus type 2,1,Number,2013,2646.5395821147645,3782.856578331327,1753.937449390301
+3,YLDs (Years Lived with Disability),97,Argentina,1,Male,13,40-44 years,976,Diabetes mellitus type 2,1,Number,2018,3887.639782997804,5462.849519810809,2676.167395202832
+3,YLDs (Years Lived with Disability),97,Argentina,2,Female,13,40-44 years,976,Diabetes mellitus type 2,1,Number,2018,3615.2684907495,5207.331922612351,2290.190595544799
+3,YLDs (Years Lived with Disability),97,Argentina,1,Male,14,45-49 years,976,Diabetes mellitus type 2,1,Number,2005,3321.2510300663007,4752.805797958786,2044.9177434181283
+3,YLDs (Years Lived with Disability),97,Argentina,2,Female,14,45-49 years,976,Diabetes mellitus type 2,1,Number,2005,3153.1974957229286,4494.094441475878,1978.748552111396
+3,YLDs (Years Lived with Disability),97,Argentina,1,Male,14,45-49 years,976,Diabetes mellitus type 2,1,Number,2009,3788.318277599624,5327.9512040990685,2467.7610413517536
+3,YLDs (Years Lived with Disability),97,Argentina,2,Female,14,45-49 years,976,Diabetes mellitus type 2,1,Number,2009,3356.956401797694,4705.991268868262,2203.1919906242188
+3,YLDs (Years Lived with Disability),97,Argentina,1,Male,14,45-49 years,976,Diabetes mellitus type 2,1,Number,2013,4352.6182257591845,6242.447857522774,2811.727616075448
+3,YLDs (Years Lived with Disability),97,Argentina,2,Female,14,45-49 years,976,Diabetes mellitus type 2,1,Number,2013,3738.154003149873,5442.091368778752,2428.6085419293167
+3,YLDs (Years Lived with Disability),97,Argentina,1,Male,14,45-49 years,976,Diabetes mellitus type 2,1,Number,2018,5523.194432946512,7809.205672010119,3571.230703165173
+3,YLDs (Years Lived with Disability),97,Argentina,2,Female,14,45-49 years,976,Diabetes mellitus type 2,1,Number,2018,4888.502528013589,7094.91862126008,3132.6697179376006
+3,YLDs (Years Lived with Disability),97,Argentina,1,Male,15,50-54 years,976,Diabetes mellitus type 2,1,Number,2005,4968.997548828655,6989.182175574154,3209.33785638733
+3,YLDs (Years Lived with Disability),97,Argentina,2,Female,15,50-54 years,976,Diabetes mellitus type 2,1,Number,2005,4636.312124717471,6435.781904877733,3106.420008761031
+3,YLDs (Years Lived with Disability),97,Argentina,1,Male,15,50-54 years,976,Diabetes mellitus type 2,1,Number,2009,5597.829732226311,7809.692320986558,3686.0673621457418
+3,YLDs (Years Lived with Disability),97,Argentina,2,Female,15,50-54 years,976,Diabetes mellitus type 2,1,Number,2009,4978.824135104895,7092.776390432685,3471.057089036972
+3,YLDs (Years Lived with Disability),97,Argentina,1,Male,15,50-54 years,976,Diabetes mellitus type 2,1,Number,2013,6420.78100176827,9079.230188182124,4203.330122718307
+3,YLDs (Years Lived with Disability),97,Argentina,2,Female,15,50-54 years,976,Diabetes mellitus type 2,1,Number,2013,5525.956304660834,7775.80401051461,3775.4890264336937
+3,YLDs (Years Lived with Disability),97,Argentina,1,Male,15,50-54 years,976,Diabetes mellitus type 2,1,Number,2018,7228.574633865218,10067.729129261408,4870.834359894503
+3,YLDs (Years Lived with Disability),97,Argentina,2,Female,15,50-54 years,976,Diabetes mellitus type 2,1,Number,2018,6383.2217876167815,8861.126837606998,4159.0109143593845
+3,YLDs (Years Lived with Disability),97,Argentina,1,Male,16,55-59 years,976,Diabetes mellitus type 2,1,Number,2005,6779.389670600456,9387.056854685085,4546.87543536332
+3,YLDs (Years Lived with Disability),97,Argentina,2,Female,16,55-59 years,976,Diabetes mellitus type 2,1,Number,2005,6537.040681807879,9022.709039806996,4465.240576126694
+3,YLDs (Years Lived with Disability),97,Argentina,1,Male,16,55-59 years,976,Diabetes mellitus type 2,1,Number,2009,7487.267890204874,10338.115664315565,5145.706173095919
+3,YLDs (Years Lived with Disability),97,Argentina,2,Female,16,55-59 years,976,Diabetes mellitus type 2,1,Number,2009,6993.801157037499,9598.459832285822,4711.395415167977
+3,YLDs (Years Lived with Disability),97,Argentina,1,Male,16,55-59 years,976,Diabetes mellitus type 2,1,Number,2013,8469.561420894068,11769.216081563847,5697.27189802844
+3,YLDs (Years Lived with Disability),97,Argentina,2,Female,16,55-59 years,976,Diabetes mellitus type 2,1,Number,2013,7724.967335830429,10738.325382818526,5180.645001980215
+3,YLDs (Years Lived with Disability),97,Argentina,1,Male,16,55-59 years,976,Diabetes mellitus type 2,1,Number,2018,9274.54033728492,12862.674026932667,6330.388192180295
+3,YLDs (Years Lived with Disability),97,Argentina,2,Female,16,55-59 years,976,Diabetes mellitus type 2,1,Number,2018,8752.878309041056,11988.958843924436,5804.804342180612
+3,YLDs (Years Lived with Disability),97,Argentina,1,Male,17,60-64 years,976,Diabetes mellitus type 2,1,Number,2005,7780.577725095752,11180.888118669334,5144.057198956003
+3,YLDs (Years Lived with Disability),97,Argentina,2,Female,17,60-64 years,976,Diabetes mellitus type 2,1,Number,2005,7952.410449027001,10961.868537651271,5291.297461744698
+3,YLDs (Years Lived with Disability),97,Argentina,1,Male,17,60-64 years,976,Diabetes mellitus type 2,1,Number,2009,8664.566852509955,12545.963014277404,5896.293215871132
+3,YLDs (Years Lived with Disability),97,Argentina,2,Female,17,60-64 years,976,Diabetes mellitus type 2,1,Number,2009,8654.231049061475,11988.94463511334,5625.396649122045
+3,YLDs (Years Lived with Disability),97,Argentina,1,Male,17,60-64 years,976,Diabetes mellitus type 2,1,Number,2013,9551.857409141703,13600.05883650326,6479.041279046896
+3,YLDs (Years Lived with Disability),97,Argentina,2,Female,17,60-64 years,976,Diabetes mellitus type 2,1,Number,2013,9589.396525517435,13278.13600917008,6351.28540064848
+3,YLDs (Years Lived with Disability),97,Argentina,1,Male,17,60-64 years,976,Diabetes mellitus type 2,1,Number,2018,10568.650512028247,15051.24572744498,7222.955533358421
+3,YLDs (Years Lived with Disability),97,Argentina,2,Female,17,60-64 years,976,Diabetes mellitus type 2,1,Number,2018,10840.718928481843,15457.086354725028,7388.105894780529
+3,YLDs (Years Lived with Disability),97,Argentina,1,Male,18,65-69 years,976,Diabetes mellitus type 2,1,Number,2005,7316.007638495887,10711.02712702511,4817.14902674547
+3,YLDs (Years Lived with Disability),97,Argentina,2,Female,18,65-69 years,976,Diabetes mellitus type 2,1,Number,2005,8241.014647658694,11883.86651475458,5264.377561657384
+3,YLDs (Years Lived with Disability),97,Argentina,1,Male,18,65-69 years,976,Diabetes mellitus type 2,1,Number,2009,8004.687395776507,11792.581349406875,5386.24198426031
+3,YLDs (Years Lived with Disability),97,Argentina,2,Female,18,65-69 years,976,Diabetes mellitus type 2,1,Number,2009,8845.798810294164,12537.786569703358,5710.478757917715
+3,YLDs (Years Lived with Disability),97,Argentina,1,Male,18,65-69 years,976,Diabetes mellitus type 2,1,Number,2013,8978.054803628786,13255.686585068965,5964.814373984944
+3,YLDs (Years Lived with Disability),97,Argentina,2,Female,18,65-69 years,976,Diabetes mellitus type 2,1,Number,2013,9829.506246361749,14094.95288669578,6341.453169915899
+3,YLDs (Years Lived with Disability),97,Argentina,1,Male,18,65-69 years,976,Diabetes mellitus type 2,1,Number,2018,10164.498542665511,14563.860261976037,6729.986845363021
+3,YLDs (Years Lived with Disability),97,Argentina,2,Female,18,65-69 years,976,Diabetes mellitus type 2,1,Number,2018,11284.455448108944,16401.108444672027,7577.295975158057
+3,YLDs (Years Lived with Disability),97,Argentina,1,Male,19,70-74 years,976,Diabetes mellitus type 2,1,Number,2005,6084.395420645963,8944.294399981003,4007.460987374857
+3,YLDs (Years Lived with Disability),97,Argentina,2,Female,19,70-74 years,976,Diabetes mellitus type 2,1,Number,2005,7703.052543654146,11037.544950955851,5018.199297105513
+3,YLDs (Years Lived with Disability),97,Argentina,1,Male,19,70-74 years,976,Diabetes mellitus type 2,1,Number,2009,6246.324631264898,9179.257966826714,4210.462551936866
+3,YLDs (Years Lived with Disability),97,Argentina,2,Female,19,70-74 years,976,Diabetes mellitus type 2,1,Number,2009,7775.515344668323,10775.224267687316,4971.101716681586
+3,YLDs (Years Lived with Disability),97,Argentina,1,Male,19,70-74 years,976,Diabetes mellitus type 2,1,Number,2013,6928.914641006531,10166.31220349679,4576.103355551867
+3,YLDs (Years Lived with Disability),97,Argentina,2,Female,19,70-74 years,976,Diabetes mellitus type 2,1,Number,2013,8487.271619693202,11990.2196541148,5571.477265233574
+3,YLDs (Years Lived with Disability),97,Argentina,1,Male,19,70-74 years,976,Diabetes mellitus type 2,1,Number,2018,8192.830745285724,11985.269426383447,5313.964300910898
+3,YLDs (Years Lived with Disability),97,Argentina,2,Female,19,70-74 years,976,Diabetes mellitus type 2,1,Number,2018,9876.568236499184,14363.1926926398,6536.331431495149
+3,YLDs (Years Lived with Disability),97,Argentina,1,Male,20,75-79 years,976,Diabetes mellitus type 2,1,Number,2005,4182.738816127368,5822.038433552855,2858.126851868713
+3,YLDs (Years Lived with Disability),97,Argentina,2,Female,20,75-79 years,976,Diabetes mellitus type 2,1,Number,2005,6122.384486739318,8691.34760299236,3980.622262477915
+3,YLDs (Years Lived with Disability),97,Argentina,1,Male,20,75-79 years,976,Diabetes mellitus type 2,1,Number,2009,4365.582743458059,6267.28851512145,3040.3630674868264
+3,YLDs (Years Lived with Disability),97,Argentina,2,Female,20,75-79 years,976,Diabetes mellitus type 2,1,Number,2009,6329.4603191285605,8771.344217070282,4190.263385441954
+3,YLDs (Years Lived with Disability),97,Argentina,1,Male,20,75-79 years,976,Diabetes mellitus type 2,1,Number,2013,4553.746250744557,6457.237880583699,3138.047238562533
+3,YLDs (Years Lived with Disability),97,Argentina,2,Female,20,75-79 years,976,Diabetes mellitus type 2,1,Number,2013,6380.941025522863,9080.45505786303,4320.56394379747
+3,YLDs (Years Lived with Disability),97,Argentina,1,Male,20,75-79 years,976,Diabetes mellitus type 2,1,Number,2018,5330.947983788484,7394.011399259566,3739.593597073299
+3,YLDs (Years Lived with Disability),97,Argentina,2,Female,20,75-79 years,976,Diabetes mellitus type 2,1,Number,2018,7347.567194960207,10523.28466565741,4968.2370271256295
+3,YLDs (Years Lived with Disability),97,Argentina,1,Male,21,80+ years,976,Diabetes mellitus type 2,1,Number,2005,3471.4736056779425,4904.656277893779,2433.458361212373
+3,YLDs (Years Lived with Disability),97,Argentina,2,Female,21,80+ years,976,Diabetes mellitus type 2,1,Number,2005,6686.794355639889,9195.266162930497,4599.829650807921
+3,YLDs (Years Lived with Disability),97,Argentina,1,Male,21,80+ years,976,Diabetes mellitus type 2,1,Number,2009,3831.6315324241673,5282.5053613218215,2690.178093852397
+3,YLDs (Years Lived with Disability),97,Argentina,2,Female,21,80+ years,976,Diabetes mellitus type 2,1,Number,2009,7332.289101625415,10205.711537943716,5065.720202817525
+3,YLDs (Years Lived with Disability),97,Argentina,1,Male,21,80+ years,976,Diabetes mellitus type 2,1,Number,2013,4270.35234996167,5970.959081348963,2934.437637247801
+3,YLDs (Years Lived with Disability),97,Argentina,2,Female,21,80+ years,976,Diabetes mellitus type 2,1,Number,2013,8129.620426258281,11316.019293483523,5625.424419879549
+3,YLDs (Years Lived with Disability),97,Argentina,1,Male,21,80+ years,976,Diabetes mellitus type 2,1,Number,2018,4811.2846077226895,6602.902406913451,3409.368248153828
+3,YLDs (Years Lived with Disability),97,Argentina,2,Female,21,80+ years,976,Diabetes mellitus type 2,1,Number,2018,8982.373514723442,12414.201333260024,6135.639852737795
+4,YLLs (Years of Life Lost),97,Argentina,1,Male,9,20-24 years,976,Diabetes mellitus type 2,1,Number,2013,127.78704551412422,157.3025571603142,101.67636550210196
+4,YLLs (Years of Life Lost),97,Argentina,2,Female,9,20-24 years,976,Diabetes mellitus type 2,1,Number,2013,253.24102846903165,306.54679990075937,208.45674766242655
+4,YLLs (Years of Life Lost),97,Argentina,1,Male,10,25-29 years,976,Diabetes mellitus type 2,1,Number,2013,147.77605067322,179.27005628291514,117.8186648070943
+4,YLLs (Years of Life Lost),97,Argentina,2,Female,10,25-29 years,976,Diabetes mellitus type 2,1,Number,2013,302.6154009035231,366.2282370784239,242.44096239809488
+4,YLLs (Years of Life Lost),97,Argentina,1,Male,11,30-34 years,976,Diabetes mellitus type 2,1,Number,2013,577.653190523235,673.0333034308873,489.91562357770476
+4,YLLs (Years of Life Lost),97,Argentina,2,Female,11,30-34 years,976,Diabetes mellitus type 2,1,Number,2013,538.708857414186,632.0163745355259,462.9570544375295
+4,YLLs (Years of Life Lost),97,Argentina,1,Male,12,35-39 years,976,Diabetes mellitus type 2,1,Number,2013,859.8551696894858,993.0299031005629,734.1434160460145
+4,YLLs (Years of Life Lost),97,Argentina,2,Female,12,35-39 years,976,Diabetes mellitus type 2,1,Number,2013,742.7714912306564,860.7526246555149,637.9050030144649
+4,YLLs (Years of Life Lost),97,Argentina,1,Male,13,40-44 years,976,Diabetes mellitus type 2,1,Number,2013,1520.1954477058969,1794.2674081804732,1312.228550855485
+4,YLLs (Years of Life Lost),97,Argentina,2,Female,13,40-44 years,976,Diabetes mellitus type 2,1,Number,2013,1286.053483984737,1477.9359182504647,1092.27131052121
+4,YLLs (Years of Life Lost),97,Argentina,1,Male,14,45-49 years,976,Diabetes mellitus type 2,1,Number,2013,4745.34360482854,5298.804608388555,4289.9214682491465
+4,YLLs (Years of Life Lost),97,Argentina,2,Female,14,45-49 years,976,Diabetes mellitus type 2,1,Number,2013,2720.2985022975963,3045.836028704487,2428.5717532554336
+4,YLLs (Years of Life Lost),97,Argentina,1,Male,15,50-54 years,976,Diabetes mellitus type 2,1,Number,2013,7657.292094039868,8474.33816875904,6920.134065689901
+4,YLLs (Years of Life Lost),97,Argentina,2,Female,15,50-54 years,976,Diabetes mellitus type 2,1,Number,2013,4385.27550098405,4875.636450671339,3957.073148730215
+4,YLLs (Years of Life Lost),97,Argentina,1,Male,16,55-59 years,976,Diabetes mellitus type 2,1,Number,2013,11480.578712999264,12656.970438585904,10557.26416315959
+4,YLLs (Years of Life Lost),97,Argentina,2,Female,16,55-59 years,976,Diabetes mellitus type 2,1,Number,2013,7355.974951294222,8073.999958441493,6660.492139314864
+4,YLLs (Years of Life Lost),97,Argentina,1,Male,17,60-64 years,976,Diabetes mellitus type 2,1,Number,2013,15300.57408183146,16685.76953293699,14216.44966289666
+4,YLLs (Years of Life Lost),97,Argentina,2,Female,17,60-64 years,976,Diabetes mellitus type 2,1,Number,2013,10950.454824207178,12002.933859967523,10085.637453172567
+4,YLLs (Years of Life Lost),97,Argentina,1,Male,18,65-69 years,976,Diabetes mellitus type 2,1,Number,2013,16885.871126089718,18430.646750636937,15708.334098581296
+4,YLLs (Years of Life Lost),97,Argentina,2,Female,18,65-69 years,976,Diabetes mellitus type 2,1,Number,2013,11972.210309228847,13219.514592042186,10857.141131674285
+4,YLLs (Years of Life Lost),97,Argentina,1,Male,19,70-74 years,976,Diabetes mellitus type 2,1,Number,2013,14667.222056446331,15989.5036297898,13568.384853254885
+4,YLLs (Years of Life Lost),97,Argentina,2,Female,19,70-74 years,976,Diabetes mellitus type 2,1,Number,2013,11855.881030157587,13164.345118848547,10804.91247289346
+4,YLLs (Years of Life Lost),97,Argentina,1,Male,20,75-79 years,976,Diabetes mellitus type 2,1,Number,2013,11870.224074924277,12899.131217119195,10837.009695782077
+4,YLLs (Years of Life Lost),97,Argentina,2,Female,20,75-79 years,976,Diabetes mellitus type 2,1,Number,2013,10791.150032745296,12020.328542913387,9712.276517815148
+4,YLLs (Years of Life Lost),97,Argentina,1,Male,21,80+ years,976,Diabetes mellitus type 2,1,Number,2013,13558.696058945154,14613.976107365157,12484.052820019884
+4,YLLs (Years of Life Lost),97,Argentina,2,Female,21,80+ years,976,Diabetes mellitus type 2,1,Number,2013,19554.17694123369,21983.248925968714,16556.93097341438
+4,YLLs (Years of Life Lost),97,Argentina,1,Male,9,20-24 years,976,Diabetes mellitus type 2,1,Number,2009,111.39773490797444,136.96671028182766,89.39982330916536
+4,YLLs (Years of Life Lost),97,Argentina,2,Female,9,20-24 years,976,Diabetes mellitus type 2,1,Number,2009,276.5709935142876,334.32363908491726,229.30490103555323
+4,YLLs (Years of Life Lost),97,Argentina,1,Male,10,25-29 years,976,Diabetes mellitus type 2,1,Number,2009,150.45441464421313,184.72661715351177,122.12600045734838
+4,YLLs (Years of Life Lost),97,Argentina,2,Female,10,25-29 years,976,Diabetes mellitus type 2,1,Number,2009,336.87001902225103,412.4057495029294,272.65814788364736
+4,YLLs (Years of Life Lost),97,Argentina,1,Male,11,30-34 years,976,Diabetes mellitus type 2,1,Number,2009,556.8888489733849,647.6979684629384,467.2685829429285
+4,YLLs (Years of Life Lost),97,Argentina,2,Female,11,30-34 years,976,Diabetes mellitus type 2,1,Number,2009,605.1897646579142,695.0148303889716,519.6063309301883
+4,YLLs (Years of Life Lost),97,Argentina,1,Male,12,35-39 years,976,Diabetes mellitus type 2,1,Number,2009,726.7047791952474,846.6501883864233,614.0203488051926
+4,YLLs (Years of Life Lost),97,Argentina,2,Female,12,35-39 years,976,Diabetes mellitus type 2,1,Number,2009,873.8714445462778,1009.47161521246,752.6179848493911
+4,YLLs (Years of Life Lost),97,Argentina,1,Male,13,40-44 years,976,Diabetes mellitus type 2,1,Number,2009,1266.920963654723,1486.4177800949697,1088.180539167015
+4,YLLs (Years of Life Lost),97,Argentina,2,Female,13,40-44 years,976,Diabetes mellitus type 2,1,Number,2009,1228.570064858264,1396.0472097366353,1078.6695500614026
+4,YLLs (Years of Life Lost),97,Argentina,1,Male,14,45-49 years,976,Diabetes mellitus type 2,1,Number,2009,3915.720422402508,4363.347874099027,3556.7408256745853
+4,YLLs (Years of Life Lost),97,Argentina,2,Female,14,45-49 years,976,Diabetes mellitus type 2,1,Number,2009,2838.4991115202324,3152.4355118720714,2545.280982227184
+4,YLLs (Years of Life Lost),97,Argentina,1,Male,15,50-54 years,976,Diabetes mellitus type 2,1,Number,2009,7533.645111451868,8270.502504486338,6856.373809215268
+4,YLLs (Years of Life Lost),97,Argentina,2,Female,15,50-54 years,976,Diabetes mellitus type 2,1,Number,2009,4729.110972044977,5217.062152364098,4253.71272827531
+4,YLLs (Years of Life Lost),97,Argentina,1,Male,16,55-59 years,976,Diabetes mellitus type 2,1,Number,2009,11633.624586783279,12641.62415623031,10675.321461392012
+4,YLLs (Years of Life Lost),97,Argentina,2,Female,16,55-59 years,976,Diabetes mellitus type 2,1,Number,2009,7589.033893486677,8309.387661447676,6897.309595126641
+4,YLLs (Years of Life Lost),97,Argentina,1,Male,17,60-64 years,976,Diabetes mellitus type 2,1,Number,2009,14901.866596449729,16205.218950909826,13603.166218549382
+4,YLLs (Years of Life Lost),97,Argentina,2,Female,17,60-64 years,976,Diabetes mellitus type 2,1,Number,2009,10183.849901340227,11116.982745795392,9270.667632332123
+4,YLLs (Years of Life Lost),97,Argentina,1,Male,18,65-69 years,976,Diabetes mellitus type 2,1,Number,2009,15853.821457415605,17215.311219609768,14498.434471912653
+4,YLLs (Years of Life Lost),97,Argentina,2,Female,18,65-69 years,976,Diabetes mellitus type 2,1,Number,2009,11653.983182783068,12750.4197156921,10538.757969770291
+4,YLLs (Years of Life Lost),97,Argentina,1,Male,19,70-74 years,976,Diabetes mellitus type 2,1,Number,2009,14597.095529227996,15932.756744834389,13258.046853432488
+4,YLLs (Years of Life Lost),97,Argentina,2,Female,19,70-74 years,976,Diabetes mellitus type 2,1,Number,2009,12105.277804434958,13323.351126944905,11011.489943053597
+4,YLLs (Years of Life Lost),97,Argentina,1,Male,20,75-79 years,976,Diabetes mellitus type 2,1,Number,2009,12472.915760539649,13664.526138245135,11323.815807760122
+4,YLLs (Years of Life Lost),97,Argentina,2,Female,20,75-79 years,976,Diabetes mellitus type 2,1,Number,2009,12109.056601182312,13309.485489644774,11077.27032931917
+4,YLLs (Years of Life Lost),97,Argentina,1,Male,21,80+ years,976,Diabetes mellitus type 2,1,Number,2009,12008.111334375028,12760.748258019603,10930.825488309421
+4,YLLs (Years of Life Lost),97,Argentina,2,Female,21,80+ years,976,Diabetes mellitus type 2,1,Number,2009,18603.214237490007,20852.58367269434,16174.204149418354
+4,YLLs (Years of Life Lost),97,Argentina,1,Male,9,20-24 years,976,Diabetes mellitus type 2,1,Number,2005,103.53480332829257,129.1127214847497,83.07578346255974
+4,YLLs (Years of Life Lost),97,Argentina,2,Female,9,20-24 years,976,Diabetes mellitus type 2,1,Number,2005,299.9678168736828,361.3908702189849,251.33468704247
+4,YLLs (Years of Life Lost),97,Argentina,1,Male,10,25-29 years,976,Diabetes mellitus type 2,1,Number,2005,147.48931057015272,182.73724420062396,114.97422761170439
+4,YLLs (Years of Life Lost),97,Argentina,2,Female,10,25-29 years,976,Diabetes mellitus type 2,1,Number,2005,350.41921247091125,427.5598389861722,291.10052728281033
+4,YLLs (Years of Life Lost),97,Argentina,1,Male,11,30-34 years,976,Diabetes mellitus type 2,1,Number,2005,504.13711783796913,601.7279646489318,422.1421925615908
+4,YLLs (Years of Life Lost),97,Argentina,2,Female,11,30-34 years,976,Diabetes mellitus type 2,1,Number,2005,477.7905855152943,555.3291371871754,402.15095095819373
+4,YLLs (Years of Life Lost),97,Argentina,1,Male,12,35-39 years,976,Diabetes mellitus type 2,1,Number,2005,647.4111960617514,758.0286854651089,550.7444609328464
+4,YLLs (Years of Life Lost),97,Argentina,2,Female,12,35-39 years,976,Diabetes mellitus type 2,1,Number,2005,765.5629921987212,882.7213912291406,656.0272526538065
+4,YLLs (Years of Life Lost),97,Argentina,1,Male,13,40-44 years,976,Diabetes mellitus type 2,1,Number,2005,1315.6204252199088,1506.6911659178209,1140.7912545923368
+4,YLLs (Years of Life Lost),97,Argentina,2,Female,13,40-44 years,976,Diabetes mellitus type 2,1,Number,2005,1258.6117491364985,1428.5048152508768,1098.2702242916864
+4,YLLs (Years of Life Lost),97,Argentina,1,Male,14,45-49 years,976,Diabetes mellitus type 2,1,Number,2005,4305.591958912343,4803.6943880727,3911.6522313454007
+4,YLLs (Years of Life Lost),97,Argentina,2,Female,14,45-49 years,976,Diabetes mellitus type 2,1,Number,2005,2769.069225528315,3093.9895832958964,2443.9099307637275
+4,YLLs (Years of Life Lost),97,Argentina,1,Male,15,50-54 years,976,Diabetes mellitus type 2,1,Number,2005,8607.571332700325,9380.368285898365,7918.506924404945
+4,YLLs (Years of Life Lost),97,Argentina,2,Female,15,50-54 years,976,Diabetes mellitus type 2,1,Number,2005,4995.863889764734,5469.516362021282,4492.321514934078
+4,YLLs (Years of Life Lost),97,Argentina,1,Male,16,55-59 years,976,Diabetes mellitus type 2,1,Number,2005,12553.088111246863,13614.928768385163,11491.391592071206
+4,YLLs (Years of Life Lost),97,Argentina,2,Female,16,55-59 years,976,Diabetes mellitus type 2,1,Number,2005,7805.178425982185,8581.07471921835,7035.945160237727
+4,YLLs (Years of Life Lost),97,Argentina,1,Male,17,60-64 years,976,Diabetes mellitus type 2,1,Number,2005,16545.23727331512,18054.953924276782,15082.415719192317
+4,YLLs (Years of Life Lost),97,Argentina,2,Female,17,60-64 years,976,Diabetes mellitus type 2,1,Number,2005,10576.466329365488,11543.90998632403,9532.058346571413
+4,YLLs (Years of Life Lost),97,Argentina,1,Male,18,65-69 years,976,Diabetes mellitus type 2,1,Number,2005,17375.751278790314,19085.748393755846,15861.022315302973
+4,YLLs (Years of Life Lost),97,Argentina,2,Female,18,65-69 years,976,Diabetes mellitus type 2,1,Number,2005,12796.640035022723,13842.309395527638,11660.224654095156
+4,YLLs (Years of Life Lost),97,Argentina,1,Male,19,70-74 years,976,Diabetes mellitus type 2,1,Number,2005,17609.01676181668,19196.648069849605,16199.484898100736
+4,YLLs (Years of Life Lost),97,Argentina,2,Female,19,70-74 years,976,Diabetes mellitus type 2,1,Number,2005,14563.795853721624,15781.19047990045,13232.881990819065
+4,YLLs (Years of Life Lost),97,Argentina,1,Male,20,75-79 years,976,Diabetes mellitus type 2,1,Number,2005,14505.343685895266,15750.441055431287,13292.37158690929
+4,YLLs (Years of Life Lost),97,Argentina,2,Female,20,75-79 years,976,Diabetes mellitus type 2,1,Number,2005,14335.721069895053,15719.360245116639,12766.389749432392
+4,YLLs (Years of Life Lost),97,Argentina,1,Male,21,80+ years,976,Diabetes mellitus type 2,1,Number,2005,12431.355536892936,13238.056047639744,11428.897415853171
+4,YLLs (Years of Life Lost),97,Argentina,2,Female,21,80+ years,976,Diabetes mellitus type 2,1,Number,2005,20060.931889795276,22432.329929638578,17130.498709033884
+4,YLLs (Years of Life Lost),97,Argentina,1,Male,9,20-24 years,976,Diabetes mellitus type 2,1,Number,2018,120.1943853933974,148.16158455828977,96.12776876266152
+4,YLLs (Years of Life Lost),97,Argentina,2,Female,9,20-24 years,976,Diabetes mellitus type 2,1,Number,2018,254.79834145753813,316.75835258747543,198.1220823113533
+4,YLLs (Years of Life Lost),97,Argentina,1,Male,10,25-29 years,976,Diabetes mellitus type 2,1,Number,2018,165.22926671921957,204.7298883409046,129.6496808860656
+4,YLLs (Years of Life Lost),97,Argentina,2,Female,10,25-29 years,976,Diabetes mellitus type 2,1,Number,2018,369.407449514901,453.383963363888,301.50726769611356
+4,YLLs (Years of Life Lost),97,Argentina,1,Male,11,30-34 years,976,Diabetes mellitus type 2,1,Number,2018,662.339397063088,771.4744287104705,563.3600960368813
+4,YLLs (Years of Life Lost),97,Argentina,2,Female,11,30-34 years,976,Diabetes mellitus type 2,1,Number,2018,607.2091737875126,696.9490052138792,502.1722931027711
+4,YLLs (Years of Life Lost),97,Argentina,1,Male,12,35-39 years,976,Diabetes mellitus type 2,1,Number,2018,968.9749650322046,1122.2568135627407,841.18052495379
+4,YLLs (Years of Life Lost),97,Argentina,2,Female,12,35-39 years,976,Diabetes mellitus type 2,1,Number,2018,879.1190100008301,1014.9862982829338,745.2440260827615
+4,YLLs (Years of Life Lost),97,Argentina,1,Male,13,40-44 years,976,Diabetes mellitus type 2,1,Number,2018,1679.0856794229762,1937.4629787541664,1462.4393520817775
+4,YLLs (Years of Life Lost),97,Argentina,2,Female,13,40-44 years,976,Diabetes mellitus type 2,1,Number,2018,1511.5902748081269,1723.0960493853859,1279.4517655784696
+4,YLLs (Years of Life Lost),97,Argentina,1,Male,14,45-49 years,976,Diabetes mellitus type 2,1,Number,2018,4723.32737248293,5114.396314086243,4304.953505402268
+4,YLLs (Years of Life Lost),97,Argentina,2,Female,14,45-49 years,976,Diabetes mellitus type 2,1,Number,2018,3384.10111103526,3717.357467446628,3018.4056156838096
+4,YLLs (Years of Life Lost),97,Argentina,1,Male,15,50-54 years,976,Diabetes mellitus type 2,1,Number,2018,7712.013664738466,8456.319521782847,7120.362926332429
+4,YLLs (Years of Life Lost),97,Argentina,2,Female,15,50-54 years,976,Diabetes mellitus type 2,1,Number,2018,4666.034267262767,5156.477078605321,4137.659464170495
+4,YLLs (Years of Life Lost),97,Argentina,1,Male,16,55-59 years,976,Diabetes mellitus type 2,1,Number,2018,11806.371014994986,12798.066305181503,10895.269939198097
+4,YLLs (Years of Life Lost),97,Argentina,2,Female,16,55-59 years,976,Diabetes mellitus type 2,1,Number,2018,7155.6822320286465,7818.129150948167,6435.593665067273
+4,YLLs (Years of Life Lost),97,Argentina,1,Male,17,60-64 years,976,Diabetes mellitus type 2,1,Number,2018,16561.549561700514,17918.77576263972,15355.048856988105
+4,YLLs (Years of Life Lost),97,Argentina,2,Female,17,60-64 years,976,Diabetes mellitus type 2,1,Number,2018,10454.283457425421,11390.640139877192,9495.642047097394
+4,YLLs (Years of Life Lost),97,Argentina,1,Male,18,65-69 years,976,Diabetes mellitus type 2,1,Number,2018,19164.261392850924,20728.60809706299,17841.750403003298
+4,YLLs (Years of Life Lost),97,Argentina,2,Female,18,65-69 years,976,Diabetes mellitus type 2,1,Number,2018,11788.85022357719,12895.781278114458,10638.940726250503
+4,YLLs (Years of Life Lost),97,Argentina,1,Male,19,70-74 years,976,Diabetes mellitus type 2,1,Number,2018,17008.280520947956,18218.181404858078,15756.67598665091
+4,YLLs (Years of Life Lost),97,Argentina,2,Female,19,70-74 years,976,Diabetes mellitus type 2,1,Number,2018,12444.068441512623,13735.95207626375,11276.889817001073
+4,YLLs (Years of Life Lost),97,Argentina,1,Male,20,75-79 years,976,Diabetes mellitus type 2,1,Number,2018,12886.610778082197,13869.947559777405,11856.714522848146
+4,YLLs (Years of Life Lost),97,Argentina,2,Female,20,75-79 years,976,Diabetes mellitus type 2,1,Number,2018,11074.905741602119,12270.323736910987,9897.78324647034
+4,YLLs (Years of Life Lost),97,Argentina,1,Male,21,80+ years,976,Diabetes mellitus type 2,1,Number,2018,13812.31996339996,14966.574186032878,12716.544307288561
+4,YLLs (Years of Life Lost),97,Argentina,2,Female,21,80+ years,976,Diabetes mellitus type 2,1,Number,2018,18978.37375836637,21336.09406845926,15469.454710613498
