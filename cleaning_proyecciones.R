@@ -2,7 +2,7 @@
 ### Limpieza de los datasets de proyecciones poblacionales por provincia, sexo
 ### y grupo etario INDEC (2005-2018)
 ### Autoras: Tamara Ricardo / Micaela Gauto
-### Fecha modificación: # 2025-10-22 15:12:09
+### Fecha modificación: # 2025-10-23 12:08:02
 
 # Cargar paquetes --------------------------------------------------------
 pacman::p_load(
@@ -90,12 +90,6 @@ proy_01_05 <- proy_01_05_raw |>
     .after = prov_id
   ) |>
 
-  # Recategorizar grupo etario
-  mutate(
-    grupo_edad_5 = str_replace(grupo_edad_5, "-", " a ") |>
-      str_replace(" y más", "+")
-  ) |>
-
   # Base long
   pivot_longer(cols = c(Varón_2001:Mujer_2005), values_to = "proy_pob") |>
 
@@ -139,17 +133,6 @@ proy_10_18 <- proy_10_18_raw |>
     .after = prov_id
   ) |>
 
-  # Recategorizar mayores 80 años
-  mutate(
-    grupo_edad_5 = fct_collapse(
-      grupo_edad_5,
-      "80+" = c("80-84", "85-89", "90-94", "95-99", "100 y más")
-    )
-  ) |>
-
-  # Cambiar etiquetas grupo etario
-  mutate(grupo_edad_5 = str_replace(grupo_edad_5, "-", " a ")) |>
-
   # Base long
   pivot_longer(cols = c(Varón_2010:Mujer_2018), values_to = "pob") |>
 
@@ -169,12 +152,6 @@ proy_10_18 <- proy_10_18_raw |>
     wt = pob,
     name = "proy_pob"
   )
-
-
-## Población estándar 2010 ----
-pob_est <- proy_10_18 |>
-  filter(anio == 2010) |>
-  select(contains("prov"), sexo, contains("grupo"), pob_est = proy_pob)
 
 
 # Estimar proyección 2009 -------------------------------------------------
@@ -207,71 +184,41 @@ proy_09 <- proy_10_18 |>
   select(anio, prov_id, prov_nombre, grupo_edad_5, sexo, proy_pob)
 
 
-# Proyecciones por grupo quinquenal --------------------------------------
-proy_ge_5 <- bind_rows(proy_01_05, proy_09, proy_10_18) |>
+# Proyecciones por grupo edad ampliado -----------------------------------
+## Dataset de proyecciones por grupo ampliado ----
+proy_ge_amp <- bind_rows(proy_01_05, proy_09, proy_10_18) |>
 
-  # Quitar registros de 2001 y 2010
-  filter(!anio %in% c("2001", "2010")) |>
-
-  # Añadir población estándar 2010
-  left_join(pob_est) |>
-
-  # Ordenar columnas
-  select(anio, everything())
-
-
-# Proyecciones por grupo decenal -----------------------------------------
-proy_ge_10 <- proy_ge_5 |>
-  # Crear grupo edad decenal
-  mutate(
-    grupo_edad_10 = case_when(
-      between(grupo_edad_5, "20 a 24", "25 a 29") ~ "20 a 29",
-      between(grupo_edad_5, "30 a 34", "35 a 39") ~ "30 a 39",
-      between(grupo_edad_5, "40 a 44", "45 a 49") ~ "40 a 49",
-      between(grupo_edad_5, "50 a 54", "55 a 59") ~ "50 a 59",
-      between(grupo_edad_5, "60 a 64", "65 a 69") ~ "60 a 69",
-      between(grupo_edad_5, "70 a 74", "75 a 79") ~ "70 a 79",
-      .default = grupo_edad_5
-    )
-  ) |>
-
-  # Agrupar datos
-  group_by(anio, prov_id, prov_nombre, grupo_edad_10, sexo) |>
-  summarise(
-    proy_pob = sum(proy_pob, na.rm = TRUE),
-    pob_est = sum(pob_est, na.rm = TRUE),
-    .groups = "drop"
-  )
-
-
-# Proyecciones por grupo ampliado ----------------------------------------
-proy_ge_amp <- proy_ge_5 |>
   # Crear grupo edad ampliado
   mutate(
     grupo_edad_amp = case_when(
-      between(grupo_edad_5, "20 a 24", "25 a 29") ~ "20 a 29",
-      between(grupo_edad_5, "30 a 34", "40 a 44") ~ "30 a 44",
-      between(grupo_edad_5, "45 a 49", "55 a 59") ~ "45 a 59",
-      between(grupo_edad_5, "60 a 64", "70 a 74") ~ "60 a 74",
+      between(grupo_edad_5, "20-24", "25-29") ~ "20 a 29",
+      between(grupo_edad_5, "30-34", "40-44") ~ "30 a 44",
+      between(grupo_edad_5, "45-49", "55-59") ~ "45 a 59",
+      between(grupo_edad_5, "60-64", "70-74") ~ "60 a 74",
       .default = "75+"
     )
   ) |>
 
   # Agrupar datos
   group_by(anio, prov_id, prov_nombre, grupo_edad_amp, sexo) |>
-  summarise(
-    proy_pob = sum(proy_pob, na.rm = TRUE),
-    pob_est = sum(pob_est, na.rm = TRUE),
-    .groups = "drop"
-  )
+  summarise(proy_pob = sum(proy_pob, na.rm = TRUE), .groups = "drop")
+
+
+## Calcular población estándar ----
+pob_est <- proy_ge_amp |>
+  # Seleccionar datos de 2010
+  filter(anio == "2010") |>
+
+  select(contains("prov"), sexo, contains("grupo"), pob_est = proy_pob)
+
+
+## Unir datasets ----
+proy_ge_amp <- proy_ge_amp |>
+  left_join(pob_est) |>
+  # Quitar filas 2001 y 2010
+  filter(!anio %in% c("2001", "2010"))
 
 
 # Guardar datos limpios --------------------------------------------------
-## Proyecciones grupo quinquenal
-export(proy_ge_5, file = "clean/proy_ge_quin_arg.csv")
-
-## Proyecciones grupo decenal
-export(proy_ge_10, file = "clean/proy_ge_dec_arg.csv")
-
 ## Proyecciones grupo ampliado
 export(proy_ge_amp, file = "clean/proy_ge_amp_arg.csv")

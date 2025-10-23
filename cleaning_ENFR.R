@@ -3,7 +3,7 @@
 ### de las Encuestas Nacionales de Factores de Riesgo (2005, 2009, 2013, 2018)
 ### Autora: Tamara Ricardo
 ### Fecha creación: # 2025-10-22 13:12:27
-### Fecha modificación: # 2025-10-22 13:53:31
+### Fecha modificación: # 2025-10-23 12:06:57
 
 # Cargar paquetes --------------------------------------------------------
 pacman::p_load(
@@ -51,27 +51,27 @@ clean_enfr <- function(x) {
       )
     ) |>
 
-    # Crear grupo de edad quinquenal
-    mutate(
-      grupo_edad_5 = age_categories(
-        edad,
-        lower = 20,
-        upper = 80,
-        by = 5,
-        separator = " a "
-      )
-    ) |>
+    # # Crear grupo de edad quinquenal
+    # mutate(
+    #   grupo_edad_5 = age_categories(
+    #     edad,
+    #     lower = 20,
+    #     upper = 80,
+    #     by = 5,
+    #     separator = " a "
+    #   )
+    # ) |>
 
-    # Crear grupo de edad decenal
-    mutate(
-      grupo_edad_10 = age_categories(
-        edad,
-        lower = 20,
-        upper = 80,
-        by = 10,
-        separator = " a "
-      )
-    ) |>
+    # # Crear grupo de edad decenal
+    # mutate(
+    #   grupo_edad_10 = age_categories(
+    #     edad,
+    #     lower = 20,
+    #     upper = 80,
+    #     by = 10,
+    #     separator = " a "
+    #   )
+    # ) |>
 
     # Crear grupo de edad ampliado
     mutate(
@@ -169,180 +169,6 @@ enfr18 <- enfr18_raw |>
   left_join(enfr18_rep)
 
 
-# Prevalencias por grupos quinquenales -----------------------------------
-## ENFR 2005 ----
-enfr05_ge_5 <- enfr05 |>
-  # Generar objeto de diseño
-  as_survey_design(weights = ponderacion) |>
-
-  # Estimar cantidad de personas con DM y prevalencia
-  group_by(prov_id, grupo_edad_5, sexo) |>
-  summarise(
-    dm_total = survey_total(dm_auto, vartype = c("se", "cv")),
-    dm_prev = survey_mean(dm_auto, vartype = c("se", "cv")),
-    .groups = "drop"
-  )
-
-
-## ENFR 2009 ----
-enfr09_ge_5 <- enfr09 |>
-  # Generar objeto de diseño
-  as_survey_design(weights = ponderacion) |>
-
-  # Estimar cantidad de personas con DM y prevalencia
-  group_by(prov_id, grupo_edad_5, sexo) |>
-  summarise(
-    dm_total = survey_total(dm_auto, vartype = c("se", "cv")),
-    dm_prev = survey_mean(dm_auto, vartype = c("se", "cv")),
-    .groups = "drop"
-  )
-
-
-## ENFR 2013 ----
-enfr13_ge_5 <- enfr13 |>
-  # Generar objeto de diseño
-  as_survey_design(weights = ponderacion) |>
-
-  # Estimar cantidad de personas con DM y prevalencia
-  group_by(prov_id, grupo_edad_5, sexo) |>
-  summarise(
-    dm_total = survey_total(dm_auto, vartype = c("se", "cv")),
-    dm_prev = survey_mean(dm_auto, vartype = c("se", "cv")),
-    .groups = "drop"
-  )
-
-
-## ENFR 2018 (warning) ----
-enfr18_ge_5 <- enfr18 |>
-  # Crear objeto diseño
-  as_survey_rep(
-    weights = wf1p,
-    repweights = starts_with("wf1p"),
-    type = "bootstrap"
-  ) |>
-
-  # Estimar cantidad de personas con DM y prevalencia
-  group_by(prov_id, grupo_edad_5, sexo) |>
-  summarise(
-    dm_total = survey_total(dm_auto, vartype = c("se", "cv")),
-    dm_prev = survey_mean(dm_auto, vartype = c("se", "cv")),
-    .groups = "drop"
-  )
-
-
-## Unir datasets ----
-enfr_ge_5 <- bind_rows(
-  enfr05_ge_5,
-  enfr09_ge_5,
-  enfr13_ge_5,
-  enfr18_ge_5,
-  .id = "anio_enfr"
-) |>
-
-  # Añadir etiquetas año ENFR
-  mutate(
-    anio_enfr = fct_relabel(anio_enfr, ~ c("2005", "2009", "2013", "2018"))
-  ) |>
-
-  # Redondear variables numéricas
-  mutate(across(.cols = where(is.numeric), .fns = ~ round(.x, 2))) |>
-
-  # Categorizar coeficiente de variación
-  mutate(
-    dm_prev_cv_cat = cut(
-      dm_prev_cv,
-      breaks = c(-Inf, .1, .2, .3, Inf),
-      labels = c("Baja", "Moderada", "Alta", "Muy alta")
-    )
-  )
-
-# Prevalencias por grupos decenales --------------------------------------
-## ENFR 2005 ----
-enfr05_ge_10 <- enfr05 |>
-  # Generar objeto de diseño
-  as_survey_design(weights = ponderacion) |>
-
-  # Estimar cantidad de personas con DM y prevalencia
-  group_by(prov_id, grupo_edad_10, sexo) |>
-  summarise(
-    dm_total = survey_total(dm_auto, vartype = c("se", "cv")),
-    dm_prev = survey_mean(dm_auto, vartype = c("se", "cv")),
-    .groups = "drop"
-  )
-
-
-## ENFR 2009 ----
-enfr09_ge_10 <- enfr09 |>
-  # Generar objeto de diseño
-  as_survey_design(weights = ponderacion) |>
-
-  # Estimar cantidad de personas con DM y prevalencia
-  group_by(prov_id, grupo_edad_10, sexo) |>
-  summarise(
-    dm_total = survey_total(dm_auto, vartype = c("se", "cv")),
-    dm_prev = survey_mean(dm_auto, vartype = c("se", "cv")),
-    .groups = "drop"
-  )
-
-
-## ENFR 2013 ----
-enfr13_ge_10 <- enfr13 |>
-  # Generar objeto de diseño
-  as_survey_design(weights = ponderacion) |>
-
-  # Estimar cantidad de personas con DM y prevalencia
-  group_by(prov_id, grupo_edad_10, sexo) |>
-  summarise(
-    dm_total = survey_total(dm_auto, vartype = c("se", "cv")),
-    dm_prev = survey_mean(dm_auto, vartype = c("se", "cv")),
-    .groups = "drop"
-  )
-
-
-## ENFR 2018 (warning) ----
-enfr18_ge_10 <- enfr18 |>
-  # Crear objeto diseño
-  as_survey_rep(
-    weights = wf1p,
-    repweights = starts_with("wf1p"),
-    type = "bootstrap"
-  ) |>
-
-  # Estimar cantidad de personas con DM y prevalencia
-  group_by(prov_id, grupo_edad_10, sexo) |>
-  summarise(
-    dm_total = survey_total(dm_auto, vartype = c("se", "cv")),
-    dm_prev = survey_mean(dm_auto, vartype = c("se", "cv")),
-    .groups = "drop"
-  )
-
-
-## Unir datasets ----
-enfr_ge_10 <- bind_rows(
-  enfr05_ge_10,
-  enfr09_ge_10,
-  enfr13_ge_10,
-  enfr18_ge_10,
-  .id = "anio_enfr"
-) |>
-
-  # Añadir etiquetas año ENFR
-  mutate(
-    anio_enfr = fct_relabel(anio_enfr, ~ c("2005", "2009", "2013", "2018"))
-  ) |>
-
-  # Redondear variables numéricas
-  mutate(across(.cols = where(is.numeric), .fns = ~ round(.x, 2))) |>
-
-  # Categorizar coeficiente de variación
-  mutate(
-    dm_prev_cv_cat = cut(
-      dm_prev_cv,
-      breaks = c(-Inf, .1, .2, .3, Inf),
-      labels = c("Baja", "Moderada", "Alta", "Muy alta")
-    )
-  )
-
 # Prevalencias por grupos ampliados --------------------------------------
 ## ENFR 2005 ----
 enfr05_ge_amp <- enfr05 |>
@@ -432,14 +258,6 @@ enfr_ge_amp <- bind_rows(
 
 
 # Guardar datos limpios --------------------------------------------------
-# Prevalencia DM por grupos quinquenales
-export(enfr_ge_5, file = "clean/prev_dm_ge_quin_arg.csv")
-
-
-# Prevalencia DM por grupos decenales
-export(enfr_ge_10, file = "clean/prev_dm_ge_dec_arg.csv")
-
-
 # Prevalencia DM por grupos ampliados
 export(enfr_ge_amp, file = "clean/prev_dm_ge_amp_arg.csv")
 

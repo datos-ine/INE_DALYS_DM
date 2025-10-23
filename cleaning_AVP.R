@@ -4,7 +4,7 @@
 ### indicadores para mayores de 80 años y para grupos decenales de edad
 ### Autora: Tamara Ricardo
 ### Fecha creación: # 2025-10-22 12:25:39
-### Fecha modificación: # 2025-10-23 09:08:05
+### Fecha modificación: # 2025-10-23 12:06:43
 
 # Cargar paquetes --------------------------------------------------------
 pacman::p_load(
@@ -122,32 +122,23 @@ defun <- bind_rows(def04, def05_18) |>
   # Filtrar muertes por DM
   filter(between(cie10_causa, "E10", "E14")) |>
 
+  # Crear variable para región geográfica
+  mutate(
+    region = case_when(
+      prov_id %in% c("02", "06", "14", "82", "30") ~ "Centro",
+      prov_id %in% c("18", "22", "34", "54") ~ "NEA",
+      prov_id %in% c("50", "70", "74", "46") ~ "Cuyo",
+      prov_id %in% c("42", "58", "62", "26", "78", "94") ~ "Patagonia",
+      .default = "NOA"
+    ),
+    .after = prov_nombre
+  ) |>
+
   # Cambiar etiquetas grupo etario
   mutate(grupo_edad_5 = str_sub(grupo_edad_5, 4)) |>
 
-  # Reagrupar mayores de 80 años
+  # Crear grupo edad ampliado
   mutate(
-    grupo_edad_5 = if_else(
-      between(grupo_edad_5, "80 a 84", "85 y más"),
-      "80+",
-      grupo_edad_5
-    )
-  ) |>
-
-  # Crear grupos edad decenal y ampliado
-  mutate(
-    # Grupo etario decenal
-    grupo_edad_10 = case_when(
-      between(grupo_edad_5, "20 a 24", "25 a 29") ~ "20 a 29",
-      between(grupo_edad_5, "30 a 34", "35 a 39") ~ "30 a 39",
-      between(grupo_edad_5, "40 a 44", "45 a 49") ~ "40 a 49",
-      between(grupo_edad_5, "50 a 54", "55 a 59") ~ "50 a 59",
-      between(grupo_edad_5, "60 a 64", "65 a 69") ~ "60 a 69",
-      between(grupo_edad_5, "70 a 74", "75 a 79") ~ "70 a 79",
-      .default = grupo_edad_5
-    ),
-
-    # Grupo etario ampliado
     grupo_edad_amp = case_when(
       between(grupo_edad_5, "20 a 24", "25 a 29") ~ "20 a 29",
       between(grupo_edad_5, "30 a 34", "40 a 44") ~ "30 a 44",
@@ -175,8 +166,8 @@ defun <- bind_rows(def04, def05_18) |>
   # Añadir filas faltantes
   complete(
     nesting(anio, anio_enfr),
-    nesting(prov_id, prov_nombre),
-    nesting(grupo_edad_5, grupo_edad_10, grupo_edad_amp),
+    nesting(prov_id, prov_nombre, region),
+    nesting(grupo_edad_5, grupo_edad_amp),
     sexo,
     fill = list(total = 0)
   ) |>
@@ -187,8 +178,8 @@ defun <- bind_rows(def04, def05_18) |>
     anio_enfr,
     prov_id,
     prov_nombre,
-    grupo_edad_5,
-    grupo_edad_10,
+    region,
+    #grupo_edad_5,
     grupo_edad_amp,
     sexo,
     wt = total
@@ -196,8 +187,7 @@ defun <- bind_rows(def04, def05_18) |>
 
 
 # Limpiar datos esperanza de vida ----------------------------------------
-## Esperanza de vida por grupos quinquenales ----
-ev_ge_5 <- ev_raw |>
+ev_ge_amp <- ev_raw |>
   # Estandarizar nombres de columnas
   clean_names() |>
   select(
@@ -222,88 +212,14 @@ ev_ge_5 <- ev_raw |>
   # Base wide
   pivot_wider(names_from = indicator, values_from = value) |>
 
-  # Cambiar etiquetas grupo etario
-  mutate(
-    grupo_edad_5 = str_replace(grupo_edad_5, "-", " a ") |>
-      str_remove(" years")
-  ) |>
-
-  # Reagrupar mayores de 80 años
-  mutate(
-    grupo_edad_5 = if_else(
-      grupo_edad_5 %in% c("80 a 84", "85+"),
-      "80+",
-      grupo_edad_5
-    )
-  ) |>
-
-  # Combinar indicadores para 80+
-  group_by(sexo, grupo_edad_5) |>
-  summarise(
-    lx = first(lx),
-    nLx = sum(nLx, na.rm = TRUE),
-    ndx = sum(ndx, na.rm = TRUE),
-    nMx = sum(nMx * nLx, na.rm = TRUE) / sum(nLx, na.rm = TRUE),
-    nqx = sum(nqx * nLx, na.rm = TRUE) / sum(nLx, na.rm = TRUE),
-    .groups = "drop"
-  ) |>
-
-  # Recalcular Tx y ex
-  group_by(sexo) |>
-  mutate(
-    Tx = rev(cumsum(rev(nLx))),
-    ex = Tx / lx
-  ) |>
-  ungroup()
-
-
-## Esperanza de vida por grupos decenales ----
-ev_ge_10 <- ev_ge_5 |>
-
-  # Grupo etario decenal
-  mutate(
-    grupo_edad_10 = case_when(
-      between(grupo_edad_5, "20 a 24", "25 a 29") ~ "20 a 29",
-      between(grupo_edad_5, "30 a 34", "35 a 39") ~ "30 a 39",
-      between(grupo_edad_5, "40 a 44", "45 a 49") ~ "40 a 49",
-      between(grupo_edad_5, "50 a 54", "55 a 59") ~ "50 a 59",
-      between(grupo_edad_5, "60 a 64", "65 a 69") ~ "60 a 69",
-      between(grupo_edad_5, "70 a 74", "75 a 79") ~ "70 a 79",
-      .default = grupo_edad_5
-    )
-  ) |>
-
-  # Recalcular indicadores por grupo decenal
-  group_by(sexo, grupo_edad_10) |>
-  summarise(
-    lx = first(lx),
-    nLx = sum(nLx, na.rm = TRUE),
-    ndx = sum(ndx, na.rm = TRUE),
-    nMx = sum(nMx * nLx, na.rm = TRUE) / sum(nLx, na.rm = TRUE),
-    nqx = sum(nqx * nLx, na.rm = TRUE) / sum(nLx, na.rm = TRUE),
-    .groups = "drop"
-  ) |>
-
-  # Calcular Tx y ex
-  group_by(sexo) |>
-  mutate(
-    Tx = rev(cumsum(rev(nLx))),
-    ex = Tx / lx
-  ) |>
-  ungroup()
-
-
-# Esperanza de vida por grupos ampliados ----
-ev_ge_amp <- ev_ge_5 |>
-
   # Crear variable para grupo edad ampliado
   mutate(
     # Grupo etario ampliado
     grupo_edad_amp = case_when(
-      between(grupo_edad_5, "20 a 24", "25 a 29") ~ "20 a 29",
-      between(grupo_edad_5, "30 a 34", "40 a 44") ~ "30 a 44",
-      between(grupo_edad_5, "45 a 49", "55 a 59") ~ "45 a 59",
-      between(grupo_edad_5, "60 a 64", "70 a 74") ~ "60 a 74",
+      between(grupo_edad_5, "20-24 years", "25-29 years") ~ "20 a 29",
+      between(grupo_edad_5, "30-34 years", "40-44 years") ~ "30 a 44",
+      between(grupo_edad_5, "45-49 years", "55-59 years") ~ "45 a 59",
+      between(grupo_edad_5, "60-64 years", "70-74 years") ~ "60 a 74",
       .default = "75+"
     )
   ) |>
@@ -329,59 +245,13 @@ ev_ge_amp <- ev_ge_5 |>
 
 
 # Calcular AVP -----------------------------------------------------------
-## AVP por grupos quinquenales ----
-AVP_ge_5 <- defun |>
-  # Calcular defunciones por trienio
-  group_by(
-    anio_enfr,
-    prov_id,
-    prov_nombre,
-    grupo_edad_5,
-    sexo
-  ) |>
-  summarise(
-    defun_n = sum(n, na.rm = TRUE),
-    defun_mean = mean(n, na.rm = TRUE),
-    .groups = "drop"
-  ) |>
-
-  # Añadir datos esperanza de vida
-  left_join(ev_ge_5) |>
-
-  # Calcular AVP x grupo quinquenal
-  mutate(avp_dm = defun_mean * ex)
-
-
-# AVP por grupos decenales ----
-AVP_ge_10 <- defun |>
-  # Calcular defunciones por trienio
-  group_by(
-    anio_enfr,
-    prov_id,
-    prov_nombre,
-    grupo_edad_10,
-    sexo
-  ) |>
-  summarise(
-    defun_n = sum(n, na.rm = TRUE),
-    defun_mean = mean(n, na.rm = TRUE),
-    .groups = "drop"
-  ) |>
-
-  # Añadir datos esperanza de vida
-  left_join(ev_ge_10) |>
-
-  # Calcular AVP por grupo decenal
-  mutate(avp_dm = defun_mean * ex)
-
-
-# AVP por grupos ampliados ----
 AVP_ge_amp <- defun |>
   # Calcular defunciones por trienio
   group_by(
     anio_enfr,
     prov_id,
     prov_nombre,
+    region,
     grupo_edad_amp,
     sexo
   ) |>
@@ -399,14 +269,6 @@ AVP_ge_amp <- defun |>
 
 
 # Exportar datos limpios -------------------------------------------------
-# AVP por grupos quinquenales
-export(AVP_ge_5, file = "clean/avp_ge_quin_arg.csv")
-
-
-# AVP por grupos decenales
-export(AVP_ge_10, file = "clean/avp_ge_dec_arg.csv")
-
-
 # AVP por grupos ampliados
 export(AVP_ge_amp, file = "clean/avp_ge_amp_arg.csv")
 
