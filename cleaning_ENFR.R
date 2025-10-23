@@ -17,18 +17,6 @@ pacman::p_load(
 
 
 # Cargar datos -----------------------------------------------------------
-## Provincias
-prov <- show_arg_codes() |>
-  # Filtrar totales
-  filter(between(codprov, "01", "24")) |>
-
-  # Cambiar etiqueta CABA
-  mutate(name_iso = if_else(codprov == "01", "CABA", name_iso)) |>
-
-  # Códigos a numérico
-  mutate(across(.cols = c(codprov, codprov_censo), .fns = ~ parse_number(.x)))
-
-
 ## ENFR 2005
 enfr05_raw <- read_delim("raw/ENFR/ENFR 2005 - Base usuario.txt")
 
@@ -54,8 +42,14 @@ clean_enfr <- function(x) {
     # Filtrar menores de 20 años
     filter(edad >= 20) |>
 
-    # Añadir etiquetas provincia
-    mutate(prov_nombre = prov$name_iso[match(prov_id, prov$codprov_censo)]) |>
+    # Cambiar formato id de provincia
+    mutate(
+      prov_id = if_else(
+        prov_id %in% c(2, 6),
+        paste0("0", prov_id),
+        as.character(prov_id)
+      )
+    ) |>
 
     # Crear grupo de edad quinquenal
     mutate(
@@ -91,11 +85,8 @@ clean_enfr <- function(x) {
     # Cambiar etiquetas sexo
     mutate(sexo = if_else(sexo == 1, "Varón", "Mujer")) |>
 
-    # Crear variable binomial para diabetes por autorreporte
-    mutate(dm_auto_bin = if_else(dm_auto == 1, 1, 0)) |>
-
-    # Cambiar etiquetas DM por autorreporte
-    mutate(dm_auto = factor(dm_auto, labels = c("Sí", "No", "NS/NC")))
+    # Convertir dm_auto a binomial
+    mutate(dm_auto = if_else(dm_auto == 1, 1, 0))
 }
 
 # Limpiar datos ----------------------------------------------------------
@@ -106,6 +97,7 @@ enfr05 <- enfr05_raw |>
 
   # Seleccionar columnas
   select(
+    id = identifi,
     prov_id = prov,
     sexo = chch04,
     edad = chch05,
@@ -184,10 +176,10 @@ enfr05_ge_5 <- enfr05 |>
   as_survey_design(weights = ponderacion) |>
 
   # Estimar cantidad de personas con DM y prevalencia
-  group_by(prov_id, prov_nombre, grupo_edad_5, sexo) |>
+  group_by(prov_id, grupo_edad_5, sexo) |>
   summarise(
-    dm_total = survey_total(dm_auto_bin, vartype = c("se", "cv")),
-    dm_prev = survey_mean(dm_auto_bin, vartype = c("se", "cv")),
+    dm_total = survey_total(dm_auto, vartype = c("se", "cv")),
+    dm_prev = survey_mean(dm_auto, vartype = c("se", "cv")),
     .groups = "drop"
   )
 
@@ -198,10 +190,10 @@ enfr09_ge_5 <- enfr09 |>
   as_survey_design(weights = ponderacion) |>
 
   # Estimar cantidad de personas con DM y prevalencia
-  group_by(prov_id, prov_nombre, grupo_edad_5, sexo) |>
+  group_by(prov_id, grupo_edad_5, sexo) |>
   summarise(
-    dm_total = survey_total(dm_auto_bin, vartype = c("se", "cv")),
-    dm_prev = survey_mean(dm_auto_bin, vartype = c("se", "cv")),
+    dm_total = survey_total(dm_auto, vartype = c("se", "cv")),
+    dm_prev = survey_mean(dm_auto, vartype = c("se", "cv")),
     .groups = "drop"
   )
 
@@ -212,10 +204,10 @@ enfr13_ge_5 <- enfr13 |>
   as_survey_design(weights = ponderacion) |>
 
   # Estimar cantidad de personas con DM y prevalencia
-  group_by(prov_id, prov_nombre, grupo_edad_5, sexo) |>
+  group_by(prov_id, grupo_edad_5, sexo) |>
   summarise(
-    dm_total = survey_total(dm_auto_bin, vartype = c("se", "cv")),
-    dm_prev = survey_mean(dm_auto_bin, vartype = c("se", "cv")),
+    dm_total = survey_total(dm_auto, vartype = c("se", "cv")),
+    dm_prev = survey_mean(dm_auto, vartype = c("se", "cv")),
     .groups = "drop"
   )
 
@@ -230,10 +222,10 @@ enfr18_ge_5 <- enfr18 |>
   ) |>
 
   # Estimar cantidad de personas con DM y prevalencia
-  group_by(prov_id, prov_nombre, grupo_edad_5, sexo) |>
+  group_by(prov_id, grupo_edad_5, sexo) |>
   summarise(
-    dm_total = survey_total(dm_auto_bin, vartype = c("se", "cv")),
-    dm_prev = survey_mean(dm_auto_bin, vartype = c("se", "cv")),
+    dm_total = survey_total(dm_auto, vartype = c("se", "cv")),
+    dm_prev = survey_mean(dm_auto, vartype = c("se", "cv")),
     .groups = "drop"
   )
 
@@ -271,10 +263,10 @@ enfr05_ge_10 <- enfr05 |>
   as_survey_design(weights = ponderacion) |>
 
   # Estimar cantidad de personas con DM y prevalencia
-  group_by(prov_id, prov_nombre, grupo_edad_10, sexo) |>
+  group_by(prov_id, grupo_edad_10, sexo) |>
   summarise(
-    dm_total = survey_total(dm_auto_bin, vartype = c("se", "cv")),
-    dm_prev = survey_mean(dm_auto_bin, vartype = c("se", "cv")),
+    dm_total = survey_total(dm_auto, vartype = c("se", "cv")),
+    dm_prev = survey_mean(dm_auto, vartype = c("se", "cv")),
     .groups = "drop"
   )
 
@@ -285,10 +277,10 @@ enfr09_ge_10 <- enfr09 |>
   as_survey_design(weights = ponderacion) |>
 
   # Estimar cantidad de personas con DM y prevalencia
-  group_by(prov_id, prov_nombre, grupo_edad_10, sexo) |>
+  group_by(prov_id, grupo_edad_10, sexo) |>
   summarise(
-    dm_total = survey_total(dm_auto_bin, vartype = c("se", "cv")),
-    dm_prev = survey_mean(dm_auto_bin, vartype = c("se", "cv")),
+    dm_total = survey_total(dm_auto, vartype = c("se", "cv")),
+    dm_prev = survey_mean(dm_auto, vartype = c("se", "cv")),
     .groups = "drop"
   )
 
@@ -299,10 +291,10 @@ enfr13_ge_10 <- enfr13 |>
   as_survey_design(weights = ponderacion) |>
 
   # Estimar cantidad de personas con DM y prevalencia
-  group_by(prov_id, prov_nombre, grupo_edad_10, sexo) |>
+  group_by(prov_id, grupo_edad_10, sexo) |>
   summarise(
-    dm_total = survey_total(dm_auto_bin, vartype = c("se", "cv")),
-    dm_prev = survey_mean(dm_auto_bin, vartype = c("se", "cv")),
+    dm_total = survey_total(dm_auto, vartype = c("se", "cv")),
+    dm_prev = survey_mean(dm_auto, vartype = c("se", "cv")),
     .groups = "drop"
   )
 
@@ -317,10 +309,10 @@ enfr18_ge_10 <- enfr18 |>
   ) |>
 
   # Estimar cantidad de personas con DM y prevalencia
-  group_by(prov_id, prov_nombre, grupo_edad_10, sexo) |>
+  group_by(prov_id, grupo_edad_10, sexo) |>
   summarise(
-    dm_total = survey_total(dm_auto_bin, vartype = c("se", "cv")),
-    dm_prev = survey_mean(dm_auto_bin, vartype = c("se", "cv")),
+    dm_total = survey_total(dm_auto, vartype = c("se", "cv")),
+    dm_prev = survey_mean(dm_auto, vartype = c("se", "cv")),
     .groups = "drop"
   )
 
@@ -358,10 +350,10 @@ enfr05_ge_amp <- enfr05 |>
   as_survey_design(weights = ponderacion) |>
 
   # Estimar cantidad de personas con DM y prevalencia
-  group_by(prov_id, prov_nombre, grupo_edad_amp, sexo) |>
+  group_by(prov_id, grupo_edad_amp, sexo) |>
   summarise(
-    dm_total = survey_total(dm_auto_bin, vartype = c("se", "cv")),
-    dm_prev = survey_mean(dm_auto_bin, vartype = c("se", "cv")),
+    dm_total = survey_total(dm_auto, vartype = c("se", "cv")),
+    dm_prev = survey_mean(dm_auto, vartype = c("se", "cv")),
     .groups = "drop"
   )
 
@@ -372,10 +364,10 @@ enfr09_ge_amp <- enfr09 |>
   as_survey_design(weights = ponderacion) |>
 
   # Estimar cantidad de personas con DM y prevalencia
-  group_by(prov_id, prov_nombre, grupo_edad_amp, sexo) |>
+  group_by(prov_id, grupo_edad_amp, sexo) |>
   summarise(
-    dm_total = survey_total(dm_auto_bin, vartype = c("se", "cv")),
-    dm_prev = survey_mean(dm_auto_bin, vartype = c("se", "cv")),
+    dm_total = survey_total(dm_auto, vartype = c("se", "cv")),
+    dm_prev = survey_mean(dm_auto, vartype = c("se", "cv")),
     .groups = "drop"
   )
 
@@ -386,10 +378,10 @@ enfr13_ge_amp <- enfr13 |>
   as_survey_design(weights = ponderacion) |>
 
   # Estimar cantidad de personas con DM y prevalencia
-  group_by(prov_id, prov_nombre, grupo_edad_amp, sexo) |>
+  group_by(prov_id, grupo_edad_amp, sexo) |>
   summarise(
-    dm_total = survey_total(dm_auto_bin, vartype = c("se", "cv")),
-    dm_prev = survey_mean(dm_auto_bin, vartype = c("se", "cv")),
+    dm_total = survey_total(dm_auto, vartype = c("se", "cv")),
+    dm_prev = survey_mean(dm_auto, vartype = c("se", "cv")),
     .groups = "drop"
   )
 
@@ -404,10 +396,10 @@ enfr18_ge_amp <- enfr18 |>
   ) |>
 
   # Estimar cantidad de personas con DM y prevalencia
-  group_by(prov_id, prov_nombre, grupo_edad_amp, sexo) |>
+  group_by(prov_id, grupo_edad_amp, sexo) |>
   summarise(
-    dm_total = survey_total(dm_auto_bin, vartype = c("se", "cv")),
-    dm_prev = survey_mean(dm_auto_bin, vartype = c("se", "cv")),
+    dm_total = survey_total(dm_auto, vartype = c("se", "cv")),
+    dm_prev = survey_mean(dm_auto, vartype = c("se", "cv")),
     .groups = "drop"
   )
 

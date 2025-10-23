@@ -4,7 +4,7 @@
 ### indicadores para mayores de 80 años y para grupos decenales de edad
 ### Autora: Tamara Ricardo
 ### Fecha creación: # 2025-10-22 12:25:39
-### Fecha modificación: # 2025-10-22 13:07:00
+### Fecha modificación: # 2025-10-23 09:08:05
 
 # Cargar paquetes --------------------------------------------------------
 pacman::p_load(
@@ -26,15 +26,15 @@ prov <- show_arg_codes() |>
 
 
 ## Esperanza vida
-esp_vida_raw <- read_csv2("raw/WHO/argentina_tabla de vida_GHO.csv", skip = 1)
+ev_raw <- read_csv2("raw/WHO/argentina_tabla de vida_GHO.csv", skip = 1)
 
 
 ## Mortalidad 2004
-def_04_raw <- import("raw/DEIS/DE_2004.csv")
+def04_raw <- import("raw/DEIS/DE_2004.csv")
 
 
 ## Mortalidad 2005-2018
-def_05_18_raw <- list.files(
+def05_18_raw <- list.files(
   path = "raw/DEIS/",
   pattern = "^defweb.",
   full.names = TRUE
@@ -49,7 +49,7 @@ def_05_18_raw <- list.files(
 
 # Limpiar datos defunciones ----------------------------------------------
 ## Defunciones 2004 ----
-def_04 <- def_04_raw |>
+def04 <- def04_raw |>
   # Estandarizar nombres de columnas
   clean_names() |>
   rename(
@@ -67,9 +67,6 @@ def_04 <- def_04_raw |>
   # Filtrar menores de edad y datos ausentes
   filter(between(grupo_edad_5, "11.20 a 24", "24.85 y más")) |>
 
-  # Añadir año defunción
-  mutate(anio_def = "2004", .before = prov_nombre) |>
-
   # Cambiar etiqueta CABA
   mutate(
     prov_nombre = if_else(
@@ -79,20 +76,17 @@ def_04 <- def_04_raw |>
     )
   ) |>
 
-  # Cambiar etiquetas grupo edad
-  mutate(grupo_edad_5 = str_sub(grupo_edad_5, start = 4)) |>
-
   # Añadir identificador numérico provincias
   mutate(
     prov_id = prov$codprov_censo[match(prov_nombre, prov$name_iso)],
-    .after = anio_def
+    .before = prov_nombre
   )
 
 
 ## Defunciones 2005-2018 ----
-def_05_18 <- def_05_18_raw |>
+def05_18 <- def05_18_raw |>
   # Unir datasets
-  list_rbind(names_to = "anio_def") |>
+  list_rbind(names_to = "anio") |>
 
   # Estandarizar nombres de columnas
   clean_names() |>
@@ -115,9 +109,6 @@ def_05_18 <- def_05_18_raw |>
   # Cambiar niveles sexo
   mutate(sexo = if_else(sexo == 1, "Varón", "Mujer")) |>
 
-  # Cambiar etiquetas grupo edad
-  mutate(grupo_edad_5 = str_sub(grupo_edad_5, start = 4)) |>
-
   # Añadir identificador categórico provincias
   mutate(
     prov_nombre = prov$name_iso[match(prov_id, prov$codprov_censo)],
@@ -126,21 +117,26 @@ def_05_18 <- def_05_18_raw |>
 
 
 ## Unir datasets defunciones ----
-defun <- bind_rows(def_04, def_05_18) |>
+defun <- bind_rows(def04, def05_18) |>
 
   # Filtrar muertes por DM
   filter(between(cie10_causa, "E10", "E14")) |>
 
-  # Reagrupar niveles grupo edad
+  # Cambiar etiquetas grupo etario
+  mutate(grupo_edad_5 = str_sub(grupo_edad_5, 4)) |>
+
+  # Reagrupar mayores de 80 años
   mutate(
-    grupo_edad_5 = fct_collapse(
-      grupo_edad_5,
-      "80+" = c("80 a 84", "80 y más", "85 y más")
+    grupo_edad_5 = if_else(
+      between(grupo_edad_5, "80 a 84", "85 y más"),
+      "80+",
+      grupo_edad_5
     )
   ) |>
 
-  # Crear grupo edad decenal
+  # Crear grupos edad decenal y ampliado
   mutate(
+    # Grupo etario decenal
     grupo_edad_10 = case_when(
       between(grupo_edad_5, "20 a 24", "25 a 29") ~ "20 a 29",
       between(grupo_edad_5, "30 a 34", "35 a 39") ~ "30 a 39",
@@ -150,11 +146,8 @@ defun <- bind_rows(def_04, def_05_18) |>
       between(grupo_edad_5, "70 a 74", "75 a 79") ~ "70 a 79",
       .default = grupo_edad_5
     ),
-    .after = grupo_edad_5
-  ) |>
 
-  # Crear grupo edad por etapa vital
-  mutate(
+    # Grupo etario ampliado
     grupo_edad_amp = case_when(
       between(grupo_edad_5, "20 a 24", "25 a 29") ~ "20 a 29",
       between(grupo_edad_5, "30 a 34", "40 a 44") ~ "30 a 44",
@@ -162,23 +155,26 @@ defun <- bind_rows(def_04, def_05_18) |>
       between(grupo_edad_5, "60 a 64", "70 a 74") ~ "60 a 74",
       .default = "75+"
     ),
-    .after = grupo_edad_10
+    .after = grupo_edad_5
   ) |>
+
+  # Completar datos faltantes año
+  mutate(anio = replace_na(anio, "2004")) |>
 
   # Añadir año ENFR
   mutate(
     anio_enfr = case_when(
-      between(anio_def, "2004", "2006") ~ "2005",
-      between(anio_def, "2008", "2010") ~ "2009",
-      between(anio_def, "2012", "2014") ~ "2013",
-      between(anio_def, "2017", "2019") ~ "2018"
+      between(anio, "2004", "2006") ~ "2005",
+      between(anio, "2008", "2010") ~ "2009",
+      between(anio, "2012", "2014") ~ "2013",
+      between(anio, "2017", "2019") ~ "2018"
     ),
-    .after = anio_def
+    .after = anio
   ) |>
 
   # Añadir filas faltantes
   complete(
-    nesting(anio_def, anio_enfr),
+    nesting(anio, anio_enfr),
     nesting(prov_id, prov_nombre),
     nesting(grupo_edad_5, grupo_edad_10, grupo_edad_amp),
     sexo,
@@ -187,7 +183,7 @@ defun <- bind_rows(def_04, def_05_18) |>
 
   # Agrupar datos
   count(
-    anio_def,
+    anio,
     anio_enfr,
     prov_id,
     prov_nombre,
@@ -201,7 +197,7 @@ defun <- bind_rows(def_04, def_05_18) |>
 
 # Limpiar datos esperanza de vida ----------------------------------------
 ## Esperanza de vida por grupos quinquenales ----
-esp_vida_ge_5 <- esp_vida_raw |>
+ev_ge_5 <- ev_raw |>
   # Estandarizar nombres de columnas
   clean_names() |>
   select(
@@ -241,7 +237,7 @@ esp_vida_ge_5 <- esp_vida_raw |>
     )
   ) |>
 
-  # Combinar indicadores
+  # Combinar indicadores para 80+
   group_by(sexo, grupo_edad_5) |>
   summarise(
     lx = first(lx),
@@ -262,15 +258,19 @@ esp_vida_ge_5 <- esp_vida_raw |>
 
 
 ## Esperanza de vida por grupos decenales ----
-esp_vida_ge_10 <- esp_vida_ge_5 |>
+ev_ge_10 <- ev_ge_5 |>
 
-  # Crear variable para grupo edad decenal
+  # Grupo etario decenal
   mutate(
-    grupo_edad_10 = defun$grupo_edad_10[match(
-      grupo_edad_5,
-      defun$grupo_edad_5
-    )],
-    .after = grupo_edad_5
+    grupo_edad_10 = case_when(
+      between(grupo_edad_5, "20 a 24", "25 a 29") ~ "20 a 29",
+      between(grupo_edad_5, "30 a 34", "35 a 39") ~ "30 a 39",
+      between(grupo_edad_5, "40 a 44", "45 a 49") ~ "40 a 49",
+      between(grupo_edad_5, "50 a 54", "55 a 59") ~ "50 a 59",
+      between(grupo_edad_5, "60 a 64", "65 a 69") ~ "60 a 69",
+      between(grupo_edad_5, "70 a 74", "75 a 79") ~ "70 a 79",
+      .default = grupo_edad_5
+    )
   ) |>
 
   # Recalcular indicadores por grupo decenal
@@ -284,7 +284,7 @@ esp_vida_ge_10 <- esp_vida_ge_5 |>
     .groups = "drop"
   ) |>
 
-  # Calcular Tx y ex sin reordenar
+  # Calcular Tx y ex
   group_by(sexo) |>
   mutate(
     Tx = rev(cumsum(rev(nLx))),
@@ -294,15 +294,18 @@ esp_vida_ge_10 <- esp_vida_ge_5 |>
 
 
 # Esperanza de vida por grupos ampliados ----
-esp_vida_ge_amp <- esp_vida_ge_5 |>
+ev_ge_amp <- ev_ge_5 |>
 
   # Crear variable para grupo edad ampliado
   mutate(
-    grupo_edad_amp = defun$grupo_edad_amp[match(
-      grupo_edad_5,
-      defun$grupo_edad_5
-    )],
-    .after = grupo_edad_5
+    # Grupo etario ampliado
+    grupo_edad_amp = case_when(
+      between(grupo_edad_5, "20 a 24", "25 a 29") ~ "20 a 29",
+      between(grupo_edad_5, "30 a 34", "40 a 44") ~ "30 a 44",
+      between(grupo_edad_5, "45 a 49", "55 a 59") ~ "45 a 59",
+      between(grupo_edad_5, "60 a 64", "70 a 74") ~ "60 a 74",
+      .default = "75+"
+    )
   ) |>
 
   # Recalcular indicadores por grupo ampliado
@@ -316,7 +319,7 @@ esp_vida_ge_amp <- esp_vida_ge_5 |>
     .groups = "drop"
   ) |>
 
-  # Calcular Tx y ex sin reordenar
+  # Calcular Tx y ex
   group_by(sexo) |>
   mutate(
     Tx = rev(cumsum(rev(nLx))),
@@ -343,7 +346,7 @@ AVP_ge_5 <- defun |>
   ) |>
 
   # Añadir datos esperanza de vida
-  left_join(esp_vida_ge_5) |>
+  left_join(ev_ge_5) |>
 
   # Calcular AVP x grupo quinquenal
   mutate(avp_dm = defun_mean * ex)
@@ -366,7 +369,7 @@ AVP_ge_10 <- defun |>
   ) |>
 
   # Añadir datos esperanza de vida
-  left_join(esp_vida_ge_10) |>
+  left_join(ev_ge_10) |>
 
   # Calcular AVP por grupo decenal
   mutate(avp_dm = defun_mean * ex)
@@ -389,7 +392,7 @@ AVP_ge_amp <- defun |>
   ) |>
 
   # Añadir datos esperanza de vida
-  left_join(esp_vida_ge_amp) |>
+  left_join(ev_ge_amp) |>
 
   # Calcular AVP por grupo decenal
   mutate(avp_dm = defun_mean * ex)
