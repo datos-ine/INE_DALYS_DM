@@ -2,17 +2,25 @@
 
 - **cleaning_AVP:**
 
-  - Limpieza de los datasets de mortalidad anual por provincia, grupo etario y sexo para Argentina (2005-2019).
+  - Actualización 23/10/2025:
 
-  - Limpieza del dataset de esperanza de vida en Argentina para el año 2019 (WHO) y recalculado de la esperanza de vida según grupos etarios ampliados.
+    - Limpieza de los datasets de mortalidad anual por provincia, grupo etario y sexo para Argentina (2005-2019).
 
-  - Cálculo de la mortalidad promedio trienal para los años de la ENFR (2005, 2009, 2013 y 2018) y estimación de los años de vida perdidos por muerte prematura (AVP).
+    - Limpieza del dataset de esperanza de vida en Argentina para el año 2019 (WHO) y recalculado de la esperanza de vida según grupos etarios ampliados.
+
+    - Cálculo de la mortalidad promedio trienal para los años de la ENFR (2005, 2009, 2013 y 2018) y estimación de los años de vida perdidos por muerte prematura (AVP).
+
+  - Actualización 27/10/2025: Cálculo de AVP por región, sexo y grupo ampliado de edad.
 
 - **cleaning_ENFR:**
 
-  - Limpieza de los datasets correspondientes a los resultados de cada ENFR (2005, 2009, 2013 y 2018).
+  - Actualización 23/10/2025:
 
-  - Estimación de la prevalencia de diabetes mellitus y su coeficiente de variación (CV) mediante técnicas de muestreo para muestras complejas, por año de la ENFR y grupo etario ampliado.
+    - Limpieza de los datasets correspondientes a los resultados de cada ENFR (2005, 2009, 2013 y 2018).
+
+    - Estimación de la prevalencia de diabetes mellitus y su coeficiente de variación (CV) mediante técnicas de muestreo para muestras complejas, por año de la ENFR, provincia, sexo y grupo etario ampliado.
+
+  - Actualización 27/10/2025: Estimación de la prevalencia de DM por región, sexo y grupo ampliado de edad.
 
 - **cleaning_proyecciones**:
 

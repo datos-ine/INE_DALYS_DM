@@ -1,10 +1,15 @@
-### Carga de DM en Argentina
-### Limpieza de los datasets de mortalidad anual por provincia, sexo y grupo etario (DEIS)
-### Limpieza del dataset de esperanza de vida por sexo y grupo etario (WHO) y recalculado de
-### indicadores para mayores de 80 años y para grupos decenales de edad
+### Análisis espacial y tendencia de la carga de enfermedad por diabetes mellitus en Argentina,
+### período 2005-2018.
+# Limpieza de los datasets de mortalidad anual por provincia, sexo y grupo etario (DEIS).
+# Limpieza del dataset de esperanza de vida por sexo y grupo etario (WHO) y recalculado de
+# indicadores para grupos de edad ampliados.
+# Cálculo de los AVP por provincia, sexo y grupo edad ampliado y por región, sexo y grupo de
+# edad ampliado.
+# Las regiones geográficas utilizadas corresponden a las definidas por la DEIS en el diccionario
+# de datos del dataset de mortalidad
 ### Autora: Tamara Ricardo
 ### Fecha creación: # 2025-10-22 12:25:39
-### Fecha modificación: # 2025-10-23 12:06:43
+### Fecha modificación: # 2025-10-27 12:49:07
 
 # Cargar paquetes --------------------------------------------------------
 pacman::p_load(
@@ -26,7 +31,7 @@ prov <- show_arg_codes() |>
 
 
 ## Esperanza vida
-ev_raw <- read_csv2("raw/WHO/argentina_tabla de vida_GHO.csv", skip = 1)
+ex_raw <- read_csv2("raw/WHO/argentina_tabla de vida_GHO.csv", skip = 1)
 
 
 ## Mortalidad 2004
@@ -38,13 +43,7 @@ def05_18_raw <- list.files(
   path = "raw/DEIS/",
   pattern = "^defweb.",
   full.names = TRUE
-) |>
-
-  # Crear columna para el año
-  set_names(nm = c(2005, 2006, 2008:2010, 2012:2014, 2017:2019)) |>
-
-  # Leer archivos csv
-  map(read_csv, locale = locale(encoding = "WINDOWS-1252"))
+)
 
 
 # Limpiar datos defunciones ----------------------------------------------
@@ -85,6 +84,12 @@ def04 <- def04_raw |>
 
 ## Defunciones 2005-2018 ----
 def05_18 <- def05_18_raw |>
+  # Crear columna para el año
+  set_names(nm = c(2005, 2006, 2008:2010, 2012:2014, 2017:2019)) |>
+
+  # Leer archivos csv
+  map(read_csv, locale = locale(encoding = "WINDOWS-1252")) |>
+
   # Unir datasets
   list_rbind(names_to = "anio") |>
 
@@ -122,14 +127,16 @@ defun <- bind_rows(def04, def05_18) |>
   # Filtrar muertes por DM
   filter(between(cie10_causa, "E10", "E14")) |>
 
-  # Crear variable para región geográfica
+  # Crear región geográfica DEIS
   mutate(
     region = case_when(
-      prov_id %in% c("02", "06", "14", "82", "30") ~ "Centro",
+      prov_id %in% c("02", "06", "14", "30", "82") ~ "Centro",
       prov_id %in% c("18", "22", "34", "54") ~ "NEA",
-      prov_id %in% c("50", "70", "74", "46") ~ "Cuyo",
-      prov_id %in% c("42", "58", "62", "26", "78", "94") ~ "Patagonia",
-      .default = "NOA"
+      prov_id %in% c("38", "66", "90") ~ "NOA1",
+      prov_id %in% c("10", "86") ~ "NOA2",
+      prov_id %in% c("46", "50", "70", "74") ~ "Cuyo",
+      prov_id %in% c("42", "58", "62") ~ "Patagonia Norte",
+      .default = "Patagonia Sur"
     ),
     .after = prov_nombre
   ) |>
@@ -179,7 +186,6 @@ defun <- bind_rows(def04, def05_18) |>
     prov_id,
     prov_nombre,
     region,
-    #grupo_edad_5,
     grupo_edad_amp,
     sexo,
     wt = total
@@ -187,7 +193,7 @@ defun <- bind_rows(def04, def05_18) |>
 
 
 # Limpiar datos esperanza de vida ----------------------------------------
-ev_ge_amp <- ev_raw |>
+ex_ge_amp <- ex_raw |>
   # Estandarizar nombres de columnas
   clean_names() |>
   select(
@@ -245,6 +251,7 @@ ev_ge_amp <- ev_raw |>
 
 
 # Calcular AVP -----------------------------------------------------------
+## Por provincia, sexo y grupo ampliado edad
 AVP_ge_amp <- defun |>
   # Calcular defunciones por trienio
   group_by(
@@ -262,15 +269,39 @@ AVP_ge_amp <- defun |>
   ) |>
 
   # Añadir datos esperanza de vida
-  left_join(ev_ge_amp) |>
+  left_join(ex_ge_amp) |>
+
+  # Calcular AVP por grupo decenal
+  mutate(avp_dm = defun_mean * ex)
+
+## Por región, sexo y grupo ampliado edad
+AVP_ge_amp_reg <- defun |>
+  # Calcular defunciones por trienio
+  group_by(
+    anio_enfr,
+    region,
+    grupo_edad_amp,
+    sexo
+  ) |>
+  summarise(
+    defun_n = sum(n, na.rm = TRUE),
+    defun_mean = mean(n, na.rm = TRUE),
+    .groups = "drop"
+  ) |>
+
+  # Añadir datos esperanza de vida
+  left_join(ex_ge_amp) |>
 
   # Calcular AVP por grupo decenal
   mutate(avp_dm = defun_mean * ex)
 
 
 # Exportar datos limpios -------------------------------------------------
-# AVP por grupos ampliados
+# AVP por provincia, sexo y grupos ampliados edad
 export(AVP_ge_amp, file = "clean/avp_ge_amp_arg.csv")
+
+# AVP por región, sexo y grupos ampliados edad
+export(AVP_ge_amp_reg, file = "clean/avp_ge_amp_reg_arg.csv")
 
 ## Limpiar environment
 rm(list = ls())

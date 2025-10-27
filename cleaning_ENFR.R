@@ -1,9 +1,10 @@
-### Carga de DM en Argentina
-### Cálculo de prevalencias de DM por provincia, sexo y grupo etario según datos
-### de las Encuestas Nacionales de Factores de Riesgo (2005, 2009, 2013, 2018)
+### Análisis espacial y tendencia de la carga de enfermedad por diabetes mellitus en Argentina,
+### período 2005-2018.
+# Cálculo de prevalencias de DM por provincia/región, sexo y grupo etario según datos
+# de las Encuestas Nacionales de Factores de Riesgo (2005, 2009, 2013, 2018)
 ### Autora: Tamara Ricardo
 ### Fecha creación: # 2025-10-22 13:12:27
-### Fecha modificación: # 2025-10-23 12:06:57
+### Fecha modificación: # 2025-10-27 13:04:20
 
 # Cargar paquetes --------------------------------------------------------
 pacman::p_load(
@@ -51,27 +52,20 @@ clean_enfr <- function(x) {
       )
     ) |>
 
-    # # Crear grupo de edad quinquenal
-    # mutate(
-    #   grupo_edad_5 = age_categories(
-    #     edad,
-    #     lower = 20,
-    #     upper = 80,
-    #     by = 5,
-    #     separator = " a "
-    #   )
-    # ) |>
-
-    # # Crear grupo de edad decenal
-    # mutate(
-    #   grupo_edad_10 = age_categories(
-    #     edad,
-    #     lower = 20,
-    #     upper = 80,
-    #     by = 10,
-    #     separator = " a "
-    #   )
-    # ) |>
+    # Crear región geográfica DEIS
+    # Crear región geográfica DEIS
+    mutate(
+      region = case_when(
+        prov_id %in% c("02", "06", "14", "30", "82") ~ "Centro",
+        prov_id %in% c("18", "22", "34", "54") ~ "NEA",
+        prov_id %in% c("38", "66", "90") ~ "NOA1",
+        prov_id %in% c("10", "86") ~ "NOA2",
+        prov_id %in% c("46", "50", "70", "74") ~ "Cuyo",
+        prov_id %in% c("42", "58", "62") ~ "Patagonia Norte",
+        .default = "Patagonia Sur"
+      ),
+      .after = prov_id
+    ) |>
 
     # Crear grupo de edad ampliado
     mutate(
@@ -169,7 +163,7 @@ enfr18 <- enfr18_raw |>
   left_join(enfr18_rep)
 
 
-# Prevalencias por grupos ampliados --------------------------------------
+# Prevalencias x provincia, sexo y grupos edad ampliados -----------------
 ## ENFR 2005 ----
 enfr05_ge_amp <- enfr05 |>
   # Generar objeto de diseño
@@ -257,9 +251,101 @@ enfr_ge_amp <- bind_rows(
   )
 
 
+# Prevalencias por región, sexo y grupos edad ampliados ------------------
+## ENFR 2005 ----
+enfr05_ge_amp_reg <- enfr05 |>
+  # Generar objeto de diseño
+  as_survey_design(weights = ponderacion) |>
+
+  # Estimar cantidad de personas con DM y prevalencia
+  group_by(region, grupo_edad_amp, sexo) |>
+  summarise(
+    dm_total = survey_total(dm_auto, vartype = c("se", "cv")),
+    dm_prev = survey_mean(dm_auto, vartype = c("se", "cv")),
+    .groups = "drop"
+  )
+
+
+## ENFR 2009 ----
+enfr09_ge_amp <- enfr09 |>
+  # Generar objeto de diseño
+  as_survey_design(weights = ponderacion) |>
+
+  # Estimar cantidad de personas con DM y prevalencia
+  group_by(region, grupo_edad_amp, sexo) |>
+  summarise(
+    dm_total = survey_total(dm_auto, vartype = c("se", "cv")),
+    dm_prev = survey_mean(dm_auto, vartype = c("se", "cv")),
+    .groups = "drop"
+  )
+
+
+## ENFR 2013 ----
+enfr13_ge_amp <- enfr13 |>
+  # Generar objeto de diseño
+  as_survey_design(weights = ponderacion) |>
+
+  # Estimar cantidad de personas con DM y prevalencia
+  group_by(region, grupo_edad_amp, sexo) |>
+  summarise(
+    dm_total = survey_total(dm_auto, vartype = c("se", "cv")),
+    dm_prev = survey_mean(dm_auto, vartype = c("se", "cv")),
+    .groups = "drop"
+  )
+
+
+## ENFR 2018 ----
+enfr18_ge_amp <- enfr18 |>
+  # Crear objeto diseño
+  as_survey_rep(
+    weights = wf1p,
+    repweights = starts_with("wf1p"),
+    type = "bootstrap"
+  ) |>
+
+  # Estimar cantidad de personas con DM y prevalencia
+  group_by(region, grupo_edad_amp, sexo) |>
+  summarise(
+    dm_total = survey_total(dm_auto, vartype = c("se", "cv")),
+    dm_prev = survey_mean(dm_auto, vartype = c("se", "cv")),
+    .groups = "drop"
+  )
+
+
+## Unir datasets ----
+enfr_ge_amp_reg <- bind_rows(
+  enfr05_ge_amp,
+  enfr09_ge_amp,
+  enfr13_ge_amp,
+  enfr18_ge_amp,
+  .id = "anio_enfr"
+) |>
+
+  # Añadir etiquetas año ENFR
+  mutate(
+    anio_enfr = fct_relabel(anio_enfr, ~ c("2005", "2009", "2013", "2018"))
+  ) |>
+
+  # Redondear variables numéricas
+  mutate(across(.cols = where(is.numeric), .fns = ~ round(.x, 2))) |>
+
+  # Categorizar coeficiente de variación
+  mutate(
+    dm_prev_cv_cat = cut(
+      dm_prev_cv,
+      breaks = c(-Inf, .1, .2, .3, Inf),
+      labels = c("Baja", "Moderada", "Alta", "Muy alta")
+    )
+  )
+
+
 # Guardar datos limpios --------------------------------------------------
-# Prevalencia DM por grupos ampliados
+# Prevalencia DM por provincia, sexo y grupos edad ampliados
 export(enfr_ge_amp, file = "clean/prev_dm_ge_amp_arg.csv")
+
+# Prevalencia DM por región, sexo y grupos edad ampliados
+export(enfr_ge_amp_reg, file = "clean/prev_dm_ge_amp_reg_arg.csv")
+
 
 ## Limpiar environment
 rm(list = ls())
